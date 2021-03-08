@@ -15,6 +15,16 @@ button{
     float: right;
 }
 
+#login{
+    margin:30px;
+    border: 2px solid blue;
+    padding:20px;
+    width:55%;
+    float: left;
+    text-align: center;
+    font-size: larger;
+}
+
 #employeeForm{
     text-align: left;
 }
@@ -42,4 +52,8 @@ button{
 .tableData{
     display: table-cell;
     text-align: left;
+}
+
+#view{
+    width: 85%;
 }

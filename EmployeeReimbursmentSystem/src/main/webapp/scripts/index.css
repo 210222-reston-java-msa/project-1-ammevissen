@@ -1,10 +1,9 @@
 @charset "ISO-8859-1";
-
 div{
     margin:30px;
     border: 2px solid blue;
     padding:20px;
-    width:45%;
+    width:55%;
     float: left;
     text-align: center;
     font-size: larger;
@@ -14,8 +13,48 @@ button{
     margin: 10px;
     color: black;
     background-color: green;
+    float: right;
+}
+
+#login{
+    margin:30px;
+    border: 2px solid blue;
+    padding:20px;
+    width:55%;
+    float: left;
+    text-align: center;
+    font-size: larger;
 }
 
 #employeeForm{
     text-align: left;
+}
+
+#logout{
+    float: right;
+}
+
+#viewRequests{
+    margin-left: auto;
+    margin-right:auto;
+}
+
+.tableHead{
+    display: table;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+.tableRow{
+    display: table-row;
+
+}
+.tableData{
+    display: table-cell;
+    text-align: left;
+}
+
+#view{
+    width: 85%;
 }

@@ -1,18 +1,23 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+        integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
 
-<link rel="stylesheet" href="scripts/index.css" type="text/css">
-
+    <link rel="stylesheet" href="/scripts/index.css" type="text/css">
 
 </head>
-<body>
 
+<body>
     <div id="employeeForm">
+        <h1>Reimbursement Request Form</h1>
+
         <form>
             <label>Amount:</label><br />
             <input type="number" min="0" step="0.01" placeholder="Amount">
@@ -52,7 +57,14 @@
             <button type="submit" class="btn btn-primary" id="submit">Submit</button>
 
         </form>
+
+        
     </div>
+
+    <button type="logout" class="btn btn-primary" id="logout">Logout</button>
+
+    <button type="button" class="btn btn-primary" id="employeeHome">Employee Home</button>
+
 
 </body>
 </html>
