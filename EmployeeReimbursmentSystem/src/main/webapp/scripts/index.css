@@ -20,7 +20,7 @@ button{
     margin:30px;
     border: 2px solid blue;
     padding:20px;
-    width:55%;
+    width:45%;
     float: left;
     text-align: center;
     font-size: larger;
@@ -53,6 +53,10 @@ button{
 .tableData{
     display: table-cell;
     text-align: left;
+    padding-left: 10px;
+    padding-right: 10px;
+    border: 3px solid black;
+    
 }
 
 #view{

@@ -40,7 +40,7 @@ constraint users_roles_fk foreign key (ers_role_id) references ers_users_roles(e
 
 drop table if exists ers_reimbursement;
 CREATE table ers_reimbursement(
-reimb_id integer primary key,
+reimb_id serial primary key,
 reimb_amount double precision not null default 0 check (reimb_amount>=0),
 reimb_submitted date default current_date,
 reimb_resolved date,
@@ -70,3 +70,6 @@ from ers_users;
 
 SELECT *
 from ers_reimbursement;
+
+
+

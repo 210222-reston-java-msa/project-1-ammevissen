@@ -6,5 +6,19 @@
   </welcome-file-list>
   
   
+  <servlet>
+    <servlet-name>FrontController</servlet-name>
+    <servlet-class>com.revature.web.FrontController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>FrontController</servlet-name>
+    <url-pattern>/employeeLogin</url-pattern>
+	<url-pattern>/managerLogin</url-pattern>
+	<url-pattern>/logout</url-pattern>
+	<url-pattern>/employeeHome</url-pattern>
+	<url-pattern>/employeeReimbursement</url-pattern>
+	<url-pattern>/error</url-pattern>	
+  </servlet-mapping>
+  
   
 </web-app>

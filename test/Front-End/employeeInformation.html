@@ -16,7 +16,7 @@
 
 <body>
 
-    <div>
+    <!-- <div>
         <h1>Employee Information</h1><br/>
 
         <p id="firstName"></p><br/>
@@ -25,11 +25,65 @@
         <p id="userID"></p><br/>
         <p id="email"></p><br/>
         <p id="role"></p><br/>
-    </div>
-    
+    </div> -->
+<div>    
+    <h1>Employee Information</h1><br/>
+
+    <form class="tableHead">
+    <!-- <span id="firstName">Current First Name: </span> -->
+    <p class="tableRow">
+        <label class="tableData" id="current">Current First Name: </label>
+        <label class="tableData" id="firstName"></label>
+    </p>
+
+    <!-- <span id="lastName">Current Last Name: </span> -->
+    <p class="tableRow">
+        <label class="tableData" id="current">Current Last Name: </label>
+        <label class="tableData" id="lastName"></label>
+    </p>
+
+    <!-- <span id="username">Current Username: </span> -->
+    <p class="tableRow">
+        <label class="tableData" id="current">Current Username: </label>
+        <label class="tableData" id="username"></label>
+    </p>
+
+    <!-- remove?  ask in A/B testing -->
+    <!-- <span id="userID">Current UserID: </span><br/> -->
+    <p class="tableRow">
+        <label class="tableData" id="current">Current UserID: </label>
+        <label class="tableData" id="userID"></label>
+    </p>
+
+
+    <!-- <span id="email">Current E-mail: </span> -->
+    <p class="tableRow">
+        <label class="tableData" id="current">Current E-mail: </label>
+        <label class="tableData" id="email"></label>
+    </p>
+
+    <!-- <span id="password">Password: </span> -->
+    <p class="tableRow">
+        <label class="tableData" id="current">Current Password: </label>
+        <label class="tableData" id="password"></label>
+    </p>
+
+    <!-- <span id="password">Repeat Password: </span> -->
+    <p class="tableRow">
+        <label class="tableData" id="current">Current role: </label>
+        <label class="tableData" id="role"></label>
+    </p>
+    <button type="submit" class="btn btn-primary" id="submit">Update Info</button>
+
+    </form>
+
+</div>
+
     <button type="logout" class="btn btn-primary" id="logout">Logout</button>
 
     <button type="button" class="btn btn-primary" id="employeeHome">Employee Home</button>
+
+    <script src="../scripts/employeeInformation.js" type="text/javascript"></script>
 
 
 </body>
