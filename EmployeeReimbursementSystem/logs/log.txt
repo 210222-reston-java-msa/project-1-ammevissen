@@ -1,0 +1,41 @@
+2021-03-09 23:24:54 INFO  Scratch:59 - User attempted to login with username: ammevissen
+2021-03-09 23:24:54 INFO  ConnectionUtil:43 - connection successful
+2021-03-09 23:24:54 INFO  ConnectionUtil:53 - connected to db
+2021-03-09 23:24:54 DEBUG EmployeeDAO:30 - about to execute Query for user: ammevissen
+2021-03-09 23:24:54 WARN  EmployeeDAO:49 - Unable to retrieve all users
+org.postgresql.util.PSQLException: ERROR: syntax error at or near "WHERE"
+  Position: 32
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2505)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2241)
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:310)
+	at org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:447)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:368)
+	at org.postgresql.jdbc.PgPreparedStatement.executeWithFlags(PgPreparedStatement.java:158)
+	at org.postgresql.jdbc.PgPreparedStatement.executeQuery(PgPreparedStatement.java:108)
+	at com.revature.repositories.EmployeeDAOImpl.findByUsername(EmployeeDAOImpl.java:31)
+	at com.revature.services.EmployeeService.confirmLogin(EmployeeService.java:11)
+	at com.revature.scratch.Scratch.main(Scratch.java:60)
+2021-03-09 23:28:31 INFO  Scratch:59 - User attempted to login with username: ammevissen
+2021-03-09 23:28:31 INFO  ConnectionUtil:43 - connection successful
+2021-03-09 23:28:31 INFO  ConnectionUtil:53 - connected to db
+2021-03-09 23:28:31 DEBUG EmployeeDAO:30 - about to execute Query for user: ammevissen
+2021-03-09 23:28:31 WARN  EmployeeDAO:49 - Unable to retrieve all users
+org.postgresql.util.PSQLException: ERROR: relation "ers_users" does not exist
+  Position: 15
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2505)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2241)
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:310)
+	at org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:447)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:368)
+	at org.postgresql.jdbc.PgPreparedStatement.executeWithFlags(PgPreparedStatement.java:158)
+	at org.postgresql.jdbc.PgPreparedStatement.executeQuery(PgPreparedStatement.java:108)
+	at com.revature.repositories.EmployeeDAOImpl.findByUsername(EmployeeDAOImpl.java:31)
+	at com.revature.services.EmployeeService.confirmLogin(EmployeeService.java:11)
+	at com.revature.scratch.Scratch.main(Scratch.java:60)
+2021-03-09 23:30:32 INFO  Scratch:59 - User attempted to login with username: ammevissen
+2021-03-09 23:30:33 INFO  ConnectionUtil:43 - connection successful
+2021-03-09 23:30:33 INFO  ConnectionUtil:53 - connected to db
+2021-03-09 23:30:33 DEBUG EmployeeDAO:30 - about to execute Query for user: ammevissen
+2021-03-09 23:30:33 DEBUG EmployeeDAO:33 - Query executed
+2021-03-09 23:30:33 DEBUG EmployeeDAO:37 - employee.next()
+2021-03-09 23:30:33 INFO  Scratch:64 - ammevissen has successfully logged in
