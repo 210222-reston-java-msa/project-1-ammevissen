@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee View</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+        integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="../scripts/index.css" type="text/css">
+
+
+</head>
+
+<body>
+    <div id="view">
+        <form>
+            <p>Which reimbursments would you like to view?:</p>
+            <select name="view" id="view">
+                <option value="">Please Select Reimbursments To View</option>
+                <option value="View Approved Reimbursment Requests">View Approved Reimbursment Requests</option>
+                <option value="View Unapproved Reimbursment Requests">View Unapproved Reimbursment Requests</option>
+                <option value="View Pending Reimbursment Requests">View Pending Reimbursment Requests</option>
+                <option value="View All Reimbursment Requests">View All Reimbursment Requests</option>
+            </select>
+            <!-- ++sort by date, status, amount, type -->
+        </form>
+        <button type="submit" class="btn btn-primary" id="submit">Submit</button>
+
+    </div>
+
+    <button type="button" class="btn btn-primary" id="logout">Logout</button>
+
+    <button type="button" class="btn btn-primary" id="employeeHome">Employee Home</button>
+
+    <div id="view">
+        <table id="viewRequests">
+            <tr>
+                <thead>
+                    <th>Reimbursment ID</th>
+                    <th>Reimbursment Amount</th>
+                    <th>Reimbursment Date Submitted</th>
+                    <th>Reimbursment Date Resolved</th>
+                    <th>Reimbursment Description</th>
+                    <!-- <th>Reimbursment Receipt</th> -->
+                    <!-- <th>Reimbursment Author</th> -->
+                    <th>Reimbursment Resolver</th>
+                    <th>Reimbursment Status</th>
+                    <th>Reimbursment Type</th>
+                </thead>
+            </tr>
+        </table>
+    </div>
+
+
+    <script src="../scripts/employeeView.js" type="text/javascript"></script>
+
+
+</body>
+</html>
