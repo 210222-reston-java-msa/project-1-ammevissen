@@ -17,19 +17,19 @@
     <div>
         <h1>Welcome </h1>
 
-        <form>
+        <form onsubmit="employeeChoice(event.preventDefault())">
             <p>What would you like to do:</p>
             <select name="task" id="task">
                 <option value="">Please select a task</option>
-                <option value="submit a reimbursment request">Submit a Reimbursment Request</option>
-                <option value="view requests">View Requests</option>
-                <option value="View Personal Information">View Personal Information</option>
+                <option value="submit a reimbursement request">Submit a Reimbursement Request</option>
+                <option value="view personal information">View Personal Information</option>
+				<option value="view requests">View Requests</option>
 
             </select>
+	        <button type="submit" class="btn btn-primary" id="submit">Submit</button>
 
         </form>
 
-        <button type="submit" class="btn btn-primary" id="submit">Submit</button>
     </div>
 
     <button type="logout" class="btn btn-primary" id="logout">Logout</button>

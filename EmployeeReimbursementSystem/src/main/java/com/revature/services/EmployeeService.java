@@ -1,5 +1,7 @@
 package com.revature.services;
 
+import java.util.List;
+
 import com.revature.models.Employee;
 import com.revature.models.Reimbursement;
 import com.revature.repositories.EmployeeDAOImpl;
@@ -29,6 +31,11 @@ public class EmployeeService {
 		
 		return eDAO.insertEmployeeUpdate(e);
 		
+	}
+	
+	
+	public static List<Object> employeeView(int e, int view){
+		return eDAO.employeeView(e, view);
 	}
 	
 }

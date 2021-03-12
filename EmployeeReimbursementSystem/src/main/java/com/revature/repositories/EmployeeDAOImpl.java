@@ -4,6 +4,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.revature.models.Employee;
 import com.revature.models.Reimbursement;
@@ -84,13 +87,13 @@ public class EmployeeDAOImpl implements EmployeeDAO{
 		try {
 			Connection conn=ConnectionUtil.getConnection();
 		
-			String reimbursment="UPDATE ers_users"
-					+ "set ers_password="
-					+ "ers_first_name=?"
-					+ "ers_last_name=?"
-					+ "where ers_users_id =?";
+			String reimbursement="UPDATE ers_users "
+					+ "SET ers_password= ?, "
+					+ "ers_first_name= ?, "
+					+ "ers_last_name= ? "
+					+ "WHERE ers_users_id = ?";
 
-			PreparedStatement pstmt = conn.prepareStatement(reimbursment);
+			PreparedStatement pstmt = conn.prepareStatement(reimbursement);
 			log.debug("pstmt created");
 		
 			pstmt.setString(1, e.getPassword());
@@ -106,6 +109,95 @@ public class EmployeeDAOImpl implements EmployeeDAO{
 		}
 		
 		
+	}
+	
+	public static List<Object> employeeView(int e, int view){
+		List<Object> employeeReimbursements= new ArrayList<Object>();
+		
+		try {
+			Connection conn=ConnectionUtil.getConnection();
+		
+			PreparedStatement pstmt;
+			
+			if (view==0) {
+//				String reimbursement="SELECT * "
+//						+ "from ers_reimbursement "
+//						+ "where reimb_author =? ";
+				
+				String reimbursement="SELECT * "
+						+ "from ers_reimbursement "
+						+ "left join ers_users "
+						+ "on ers_reimbursement.reimb_resolver=ers_users.ers_users_id "
+						+ "where reimb_author =? ";
+
+
+				 pstmt= conn.prepareStatement(reimbursement);
+				log.debug("pstmt created");
+			
+				pstmt.setInt(1, e);
+				
+			}else {
+				
+//				String reimbursement="SELECT * "
+//						+ "from ers_reimbursement "
+//						+ "where reimb_author =? AND REIMB_STATUS_ID =? ";
+
+				String reimbursement="SELECT * "
+						+ "from ers_reimbursement "
+						+ "left join ers_users "
+						+ "on ers_reimbursement.reimb_resolver=ers_users.ers_users_id "
+						+ "where reimb_author =? AND REIMB_STATUS_ID =? ";
+
+				
+				 pstmt= conn.prepareStatement(reimbursement);
+				log.debug("pstmt created");
+			
+				pstmt.setInt(1, e);
+				pstmt.setInt(2, view);
+			}
+			
+			ResultSet result=pstmt.executeQuery();
+			log.debug("Query executed");
+			
+			while(result.next()) {
+				List<Object> employeeReimbursement= new ArrayList<Object>();
+				employeeReimbursement.add(result.getInt("reimb_id"));
+				employeeReimbursement.add(result.getDouble("reimb_amount"));
+				employeeReimbursement.add(result.getObject("reimb_submitted", LocalDate.class));
+				employeeReimbursement.add(result.getObject("reimb_resolved", LocalDate.class));
+				employeeReimbursement.add(result.getString("reimb_description"));
+				employeeReimbursement.add(result.getInt("reimb_author"));
+				
+				//use merge table to cut down on calls to db
+//				if (result.getInt("reimb_resolver")==0) {
+//					employeeReimbursement.add("null");
+//				}else {
+//					String lastName="SELECT ers_last_name "
+//							+ "FROM ers_users "
+//							+ "WHERE ers_users_id=?";
+//					PreparedStatement pstmt2= conn.prepareStatement(lastName);
+//					pstmt2.setInt(1, result.getInt("reimb_resolver"));
+//					ResultSet lName=pstmt2.executeQuery();
+//					lName.next();
+//					employeeReimbursement.add(lName.getString("ers_last_name"));
+//					
+//				}
+				//employeeReimbursement.add(result.getInt("reimb_resolver"));
+				employeeReimbursement.add(result.getString("ers_last_name"));
+				employeeReimbursement.add(result.getInt("reimb_status_id"));
+				employeeReimbursement.add(result.getInt("reimb_type_id"));
+				
+				log.debug(employeeReimbursement);
+				employeeReimbursements.add(employeeReimbursement);
+			}
+			
+			log.debug(employeeReimbursements);
+			
+		}catch (SQLException ex) {
+			log.warn("Unable insert reimbursement into the database", ex);
+		}
+		
+		return employeeReimbursements;
 	}
 
 

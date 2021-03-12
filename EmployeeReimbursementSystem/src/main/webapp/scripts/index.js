@@ -22,12 +22,49 @@ function employeeLogin(){
         if (this.readyState === 4 && this.status === 200) {
             console.log("success");
 
-            sessionStorage.setItem('userId', this.responseText);
 
 			console.log("heading to employee Home");
             window.location = "http://localhost:8080/EmployeeReimbursementSystem/employeeHome.html";
+			
+			console.log("standard");	
+			
+			sessionStorage.setItem('userId', this.responseText)
+			
+			let SesInfo = sessionStorage.getItem('userId');
+			
+			console.log(`the current out is: ${SesInfo}`);
 
-            console.log(sessionStorage.getItem('userId'));
+//			console.log(`the current user is: ${SesInfo[0]}`);
+
+//			console.log(`the current err is: ${SesInfo[1]}`);
+			
+			let SesInfoOjb = JSON.parse(SesInfo);
+			
+			console.log(`the current user is: ${SesInfoOjb.e.username}`);
+
+			console.log(`the current err is: ${SesInfoOjb.err.err}`);
+
+			console.log(`the current list is: ${SesInfoOjb.list}`);
+
+			console.log(`the current list[0] is: ${SesInfoOjb.list[0]}`);
+
+			console.log(`the current list[1] is: ${SesInfoOjb.list[1]}`);
+
+			console.log(`the current list[2] is: ${SesInfoOjb.list[2]}`);
+			console.log(`the current list[2][0] is: ${SesInfoOjb.list[2][0]}`);
+			console.log(`the current list[2][1] is: ${SesInfoOjb.list[2][1]}`);
+
+
+			//let sesInfo=sessionStorage.setItem('userId', this.responseText)		
+            //console.log(sessionStorage.setItem('userId', this.responseText));
+			//console.log(JSON.parse(sesInfo));
+			
+			//console.log("loop");
+			//for (let i=0; i<sesInfo.length(); i++){
+			//	console.log(i);
+			//	console.log(sesInfo[i]);
+			//}
+			
         }
 
         if (this.readyState === 4 && this.status === 204) { // 204 means NO CONTENT FOUND (but connection was made)

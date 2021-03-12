@@ -50,6 +50,10 @@ public class FrontController extends HttpServlet {
 			log.debug("heading to process Employee Update");
 			RequestHelper.processEmployeeUpdate(request, response);
 			break;
+		case "employeeView":
+			log.debug("heading to Employee View");
+			RequestHelper.empoloyeeView(request, response);
+			break;
 				
 				
 		}

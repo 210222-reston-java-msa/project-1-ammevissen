@@ -1,10 +1,11 @@
 //on page startup 
 let SesInfo = sessionStorage.getItem('userId');
+console.log(`the current user is: ${SesInfo}`);
 
 let firstName;
 let lastName;
 let username;
-let userID;
+let userId;
 let email;
 let role;
 
@@ -13,25 +14,37 @@ if (SesInfo === null) {
 } else {
 		
 	let SesInfoOjb = JSON.parse(SesInfo); // parse the data that we see == to that attribute
-		
+	e=SesInfoOjb.e;
+	
 	console.log(SesInfoOjb.userId);
 		
-	if (SesInfoOjb != null) {
-		firstName=SesInfoOjb.firstName;
-		lastName=SesInfoOjb.lastName;
-		username=SesInfoOjb.username;
-		userID=SesInfoOjb.userId;
-		email=SesInfoOjb.email;
-		role=SesInfoOjb.role;
+	if (e.username!=null){
+		firstName=e.firstName;
+		lastName=e.lastName;
+		username=e.username;
+		userId=e.userId;
+		email=e.email;
+		role=e.roleId;
 	}
 }
 
-document.getElementById("firstName").innerHTML=firstName
-document.getElementById("lastName").innerHTML=lastName
-document.getElementById("username").innerHTML=username
-document.getElementById("userID").innerHTML=userID
-document.getElementById("email").innerHTML=email
-if (role=="1"){
+console.log("user info");
+console.log(firstName);
+console.log(lastName);
+console.log(username);
+console.log(userId);
+console.log(email);
+console.log(role);
+
+
+document.getElementById("firstName").innerHTML=firstName;
+document.getElementById("lastName").innerHTML=lastName;
+document.getElementById("username").innerHTML=username;
+document.getElementById("userId").innerHTML=userId;
+document.getElementById("email").innerHTML=email;
+
+console.log(role);
+if (Number(role)==1){
     document.getElementById("role").innerHTML="  employee"
 
 }else{
@@ -40,5 +53,5 @@ if (role=="1"){
 
 
 function update(){
-			window.location = "http://localhost:8080/EmployeeReimbursementSystem/employeeView.html";
+			window.location = "http://localhost:8080/EmployeeReimbursementSystem/employeeInformationUpdate.html";
 }

@@ -1,39 +1,52 @@
 //on page startup 
 let SesInfo = sessionStorage.getItem('userId');
+console.log(`the current user is: ${SesInfo}`);
 
 let firstName;
 let lastName;
 let username;
-let userID;
+let userId;
 let email;
 let role;
 
 if (SesInfo === null) {
-	window.location = window.location = "http://localhost:8080/EmployeeReimbursementSystem/index.html";;
+	window.location = "http://localhost:8080/EmployeeReimbursementSystem/index.html";
 } else {
 		
 	let SesInfoOjb = JSON.parse(SesInfo); // parse the data that we see == to that attribute
-		
+	e=SesInfoOjb.e;
+	
 	console.log(SesInfoOjb.userId);
 		
-	if (SesInfoOjb != null) {
-		firstName=SesInfoOjb.firstName;
-		lastName=SesInfoOjb.lastName;
-		username=SesInfoOjb.username;
-		userID=SesInfoOjb.userId;
-		email=SesInfoOjb.email;
-		role=SesInfoOjb.role;
-	} else {
-		window.location = window.location = "http://localhost:8080/EmployeeReimbursementSystem/index.html";
+	if (e.username!=null){
+		firstName=e.firstName;
+		lastName=e.lastName;
+		username=e.username;
+		userId=e.userId;
+		email=e.email;
+		role=e.roleId;
+	} else{
+		window.location = "http://localhost:8080/EmployeeReimbursementSystem/index.html";
 	}
 }
 
-document.getElementById("firstName").innerHTML=firstName
-document.getElementById("lastName").innerHTML=lastName
-document.getElementById("username").innerHTML=username
-document.getElementById("userID").innerHTML=userID
-document.getElementById("email").innerHTML=email
-if (role=="1"){
+console.log("user info");
+console.log(firstName);
+console.log(lastName);
+console.log(username);
+console.log(userId);
+console.log(email);
+console.log(role);
+
+
+document.getElementById("firstName").innerHTML=firstName;
+document.getElementById("lastName").innerHTML=lastName;
+document.getElementById("username").innerHTML=username;
+document.getElementById("userId").innerHTML=userId;
+document.getElementById("email").innerHTML=email;
+
+console.log(role);
+if (Number(role)==1){
     document.getElementById("role").innerHTML="  employee"
 
 }else{
@@ -42,20 +55,21 @@ if (role=="1"){
 
 
 
-
 function update(){
 	console.log("updating employee profile");
 	let SesInfo = sessionStorage.getItem('userId');
 	let SesInfoOjb = JSON.parse(SesInfo); // parse the data that we see == to that attribute
+	e=SesInfoOjb.e;
 	
-	
-	let firstName=SesInfoOjb.firstName;
-	let lastName=SesInfoOjb.lastName;
-	let username=SesInfoOjb.username;
-	let userID=SesInfoOjb.userId;
-	let email=SesInfoOjb.email;
-	let role=SesInfoOjb.role;
-	let password=SesInfoOjb.password;
+	console.log(SesInfoOjb.userId);
+			
+	let firstName=e.firstName;
+	let lastName=e.lastName;
+	let username=e.username;
+	let userId=e.userId;
+	let email=e.email;
+	let role=e.roleId;
+	let password=e.password;
 
 	let newFirstName=document.getElementById("newFirstName").value;
 	let newLastName=document.getElementById("newLastName").value;
@@ -75,8 +89,6 @@ function update(){
 	}
 	
 	
-	
-
 	let employeeTemplate={
 		userId : userId,
 		username : username,
@@ -97,27 +109,26 @@ function update(){
 
             sessionStorage.setItem('userId', this.responseText);
 
-			console.log("heading to employee Home");
+			console.log("heading to employee information");
             window.location = "http://localhost:8080/EmployeeReimbursementSystem/employeeInformation.html";
 
-            console.log(sessionStorage.getItem('userId'));
+			console.log(sessionStorage.getItem('userId'));
+            
         }
 
-        if (this.readyState === 4 && this.status === 204) {
+        if (this.readyState === 4 && this.status === 204) { // 204 means NO CONTENT FOUND (but connection was made)
 
-            console.log("failed to update user profile");
+            console.log("could not update user info");
 
-            let childDiv = document.getElementById('warningText');
-            childDiv.textContent = "Failed to login!  Username of Password is incorrect";
         }
     }
 
 	console.log("step 3");
     // 3. xhr.open("POST, "http:/localhost:8080/EmployeeDBServlet/url for the loginServlet")
-    xhr.open("POST", "http://localhost:8080/EmployeeReimbursementSystem/employeeUpdate");
+    xhr.open("POST", "http://localhost:8080/EmployeeReimbursementSystem/employeeUpdate")
 
 	console.log("step 4");
     // 4. xhr.send();
-    xhr.send(JSON.stringify(employeeTemplate));
+    xhr.send(JSON.stringify(employeeTemplate))
 	console.log("Done");
 }

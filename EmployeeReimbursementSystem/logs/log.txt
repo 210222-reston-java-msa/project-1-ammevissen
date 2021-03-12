@@ -1,0 +1,180 @@
+2021-03-12 00:00:10 INFO  ConnectionUtil:42 - connection successful
+2021-03-12 00:00:10 INFO  ConnectionUtil:52 - connected to db
+2021-03-12 00:00:10 DEBUG Scratch:91 - pstmt created
+2021-03-12 00:00:10 WARN  Scratch:102 - Unable insert reimbursement into the database
+org.postgresql.util.PSQLException: ERROR: syntax error at or near "="
+  Position: 33
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2505)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2241)
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:310)
+	at org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:447)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:368)
+	at org.postgresql.jdbc.PgPreparedStatement.executeWithFlags(PgPreparedStatement.java:158)
+	at org.postgresql.jdbc.PgPreparedStatement.executeUpdate(PgPreparedStatement.java:124)
+	at com.revature.scratch.Scratch.main(Scratch.java:99)
+2021-03-12 00:00:10 DEBUG Scratch:103 - 0
+2021-03-12 00:01:00 INFO  ConnectionUtil:42 - connection successful
+2021-03-12 00:01:00 INFO  ConnectionUtil:52 - connected to db
+2021-03-12 00:01:00 DEBUG Scratch:91 - pstmt created
+2021-03-12 00:01:00 WARN  Scratch:102 - Unable insert reimbursement into the database
+org.postgresql.util.PSQLException: ERROR: syntax error at or near "="
+  Position: 33
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2505)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2241)
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:310)
+	at org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:447)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:368)
+	at org.postgresql.jdbc.PgPreparedStatement.executeWithFlags(PgPreparedStatement.java:158)
+	at org.postgresql.jdbc.PgPreparedStatement.executeUpdate(PgPreparedStatement.java:124)
+	at com.revature.scratch.Scratch.main(Scratch.java:99)
+2021-03-12 00:01:00 DEBUG Scratch:103 - 0
+2021-03-12 00:03:13 INFO  ConnectionUtil:42 - connection successful
+2021-03-12 00:03:13 INFO  ConnectionUtil:52 - connected to db
+2021-03-12 00:03:13 DEBUG Scratch:91 - pstmt created
+2021-03-12 00:03:13 WARN  Scratch:102 - Unable insert reimbursement into the database
+org.postgresql.util.PSQLException: ERROR: syntax error at or near "="
+  Position: 33
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2505)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2241)
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:310)
+	at org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:447)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:368)
+	at org.postgresql.jdbc.PgPreparedStatement.executeWithFlags(PgPreparedStatement.java:158)
+	at org.postgresql.jdbc.PgPreparedStatement.executeUpdate(PgPreparedStatement.java:124)
+	at com.revature.scratch.Scratch.main(Scratch.java:99)
+2021-03-12 00:03:13 DEBUG Scratch:103 - 0
+2021-03-12 00:05:26 INFO  ConnectionUtil:42 - connection successful
+2021-03-12 00:05:26 INFO  ConnectionUtil:52 - connected to db
+2021-03-12 00:05:26 DEBUG Scratch:91 - pstmt created
+2021-03-12 00:05:26 DEBUG Scratch:98 - UPDATE ers_usersSET ers_password= 'word',ers_first_name= 'andrew',ers_last_name= 'mev'WHERE ers_users_id = 5
+2021-03-12 00:05:26 WARN  Scratch:102 - Unable insert reimbursement into the database
+org.postgresql.util.PSQLException: ERROR: syntax error at or near "="
+  Position: 33
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2505)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2241)
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:310)
+	at org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:447)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:368)
+	at org.postgresql.jdbc.PgPreparedStatement.executeWithFlags(PgPreparedStatement.java:158)
+	at org.postgresql.jdbc.PgPreparedStatement.executeUpdate(PgPreparedStatement.java:124)
+	at com.revature.scratch.Scratch.main(Scratch.java:99)
+2021-03-12 00:05:26 DEBUG Scratch:103 - 0
+2021-03-12 00:06:08 INFO  ConnectionUtil:42 - connection successful
+2021-03-12 00:06:08 INFO  ConnectionUtil:52 - connected to db
+2021-03-12 00:06:08 DEBUG Scratch:91 - pstmt created
+2021-03-12 00:06:08 DEBUG Scratch:98 - UPDATE ers_users SET ers_password= 'word', ers_first_name= 'andrew', ers_last_name= 'mev' WHERE ers_users_id = 5
+2021-03-12 00:06:08 DEBUG Scratch:99 - 1
+2021-03-12 14:44:35 INFO  ConnectionUtil:42 - connection successful
+2021-03-12 14:44:35 INFO  ConnectionUtil:52 - connected to db
+2021-03-12 14:44:35 DEBUG Scratch:91 - pstmt created
+2021-03-12 14:44:35 DEBUG Scratch:98 - UPDATE ers_users SET ers_password= 'w', ers_first_name= 'andrew', ers_last_name= 'mev' WHERE ers_users_id = 5
+2021-03-12 14:44:35 DEBUG Scratch:99 - 1
+2021-03-12 15:19:16 INFO  ConnectionUtil:42 - connection successful
+2021-03-12 15:19:16 INFO  ConnectionUtil:52 - connected to db
+2021-03-12 15:19:16 DEBUG Scratch:143 - pstmt created
+2021-03-12 15:19:16 WARN  Scratch:170 - Unable insert reimbursement into the database
+org.postgresql.util.PSQLException: ERROR: syntax error at or near "="
+  Position: 50
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2505)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2241)
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:310)
+	at org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:447)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:368)
+	at org.postgresql.jdbc.PgPreparedStatement.executeWithFlags(PgPreparedStatement.java:158)
+	at org.postgresql.jdbc.PgPreparedStatement.executeQuery(PgPreparedStatement.java:108)
+	at com.revature.scratch.Scratch.main(Scratch.java:149)
+2021-03-12 15:20:03 INFO  ConnectionUtil:42 - connection successful
+2021-03-12 15:20:03 INFO  ConnectionUtil:52 - connected to db
+2021-03-12 15:20:03 DEBUG Scratch:143 - pstmt created
+2021-03-12 15:20:03 DEBUG Scratch:150 - Query executed
+2021-03-12 15:20:03 DEBUG Scratch:167 - []
+2021-03-12 15:20:36 INFO  ConnectionUtil:42 - connection successful
+2021-03-12 15:20:36 INFO  ConnectionUtil:52 - connected to db
+2021-03-12 15:20:36 DEBUG Scratch:143 - pstmt created
+2021-03-12 15:20:36 DEBUG Scratch:150 - Query executed
+2021-03-12 15:20:36 DEBUG Scratch:168 - []
+2021-03-12 15:21:16 INFO  ConnectionUtil:42 - connection successful
+2021-03-12 15:21:16 INFO  ConnectionUtil:52 - connected to db
+2021-03-12 15:21:16 DEBUG Scratch:132 - pstmt created
+2021-03-12 15:21:16 DEBUG Scratch:150 - Query executed
+2021-03-12 15:21:16 DEBUG Scratch:164 - [4, 3.14, 2021-03-10, null, More Pi Day pies!!, 5, 0, 1, 4]
+2021-03-12 15:21:16 DEBUG Scratch:164 - [5, 3.14, 2021-03-11, null, Even More Pi Day pies!!!!, 5, 0, 1, 4]
+2021-03-12 15:21:16 DEBUG Scratch:164 - [1, 3.14, 2021-03-10, null, pi day food, 5, 0, 2, 4]
+2021-03-12 15:21:16 DEBUG Scratch:164 - [2, 3.14, 2021-03-10, null, pi day food, 5, 0, 3, 4]
+2021-03-12 15:21:16 DEBUG Scratch:168 - [[4, 3.14, 2021-03-10, null, More Pi Day pies!!, 5, 0, 1, 4], [5, 3.14, 2021-03-11, null, Even More Pi Day pies!!!!, 5, 0, 1, 4], [1, 3.14, 2021-03-10, null, pi day food, 5, 0, 2, 4], [2, 3.14, 2021-03-10, null, pi day food, 5, 0, 3, 4]]
+2021-03-12 15:22:41 INFO  ConnectionUtil:42 - connection successful
+2021-03-12 15:22:41 INFO  ConnectionUtil:52 - connected to db
+2021-03-12 15:22:41 DEBUG Scratch:143 - pstmt created
+2021-03-12 15:22:41 DEBUG Scratch:150 - Query executed
+2021-03-12 15:22:41 DEBUG Scratch:164 - [4, 3.14, 2021-03-10, null, More Pi Day pies!!, 5, 0, 1, 4]
+2021-03-12 15:22:41 DEBUG Scratch:164 - [5, 3.14, 2021-03-11, null, Even More Pi Day pies!!!!, 5, 0, 1, 4]
+2021-03-12 15:22:41 DEBUG Scratch:168 - [[4, 3.14, 2021-03-10, null, More Pi Day pies!!, 5, 0, 1, 4], [5, 3.14, 2021-03-11, null, Even More Pi Day pies!!!!, 5, 0, 1, 4]]
+2021-03-12 15:46:32 INFO  ConnectionUtil:42 - connection successful
+2021-03-12 15:46:32 INFO  ConnectionUtil:52 - connected to db
+2021-03-12 15:46:32 DEBUG Scratch:132 - pstmt created
+2021-03-12 15:46:32 DEBUG Scratch:150 - Query executed
+2021-03-12 15:46:32 DEBUG Scratch:176 - [4, 3.14, 2021-03-10, null, More Pi Day pies!!, 5, null, 1, 4]
+2021-03-12 15:46:32 DEBUG Scratch:176 - [5, 3.14, 2021-03-11, null, Even More Pi Day pies!!!!, 5, null, 1, 4]
+2021-03-12 15:46:32 WARN  Scratch:183 - Unable insert reimbursement into the database
+org.postgresql.util.PSQLException: No value specified for parameter 1.
+	at org.postgresql.core.v3.SimpleParameterList.checkAllParametersSet(SimpleParameterList.java:264)
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:294)
+	at org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:447)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:368)
+	at org.postgresql.jdbc.PgPreparedStatement.executeWithFlags(PgPreparedStatement.java:158)
+	at org.postgresql.jdbc.PgPreparedStatement.executeQuery(PgPreparedStatement.java:108)
+	at com.revature.scratch.Scratch.main(Scratch.java:169)
+2021-03-12 15:48:44 INFO  ConnectionUtil:42 - connection successful
+2021-03-12 15:48:44 INFO  ConnectionUtil:52 - connected to db
+2021-03-12 15:48:44 DEBUG Scratch:132 - pstmt created
+2021-03-12 15:48:44 DEBUG Scratch:150 - Query executed
+2021-03-12 15:48:44 DEBUG Scratch:178 - [4, 3.14, 2021-03-10, null, More Pi Day pies!!, 5, null, 1, 4]
+2021-03-12 15:48:44 DEBUG Scratch:178 - [5, 3.14, 2021-03-11, null, Even More Pi Day pies!!!!, 5, null, 1, 4]
+2021-03-12 15:48:44 WARN  Scratch:185 - Unable insert reimbursement into the database
+org.postgresql.util.PSQLException: No value specified for parameter 1.
+	at org.postgresql.core.v3.SimpleParameterList.checkAllParametersSet(SimpleParameterList.java:264)
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:294)
+	at org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:447)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:368)
+	at org.postgresql.jdbc.PgPreparedStatement.executeWithFlags(PgPreparedStatement.java:158)
+	at org.postgresql.jdbc.PgPreparedStatement.executeQuery(PgPreparedStatement.java:108)
+	at com.revature.scratch.Scratch.main(Scratch.java:171)
+2021-03-12 15:49:38 INFO  ConnectionUtil:42 - connection successful
+2021-03-12 15:49:38 INFO  ConnectionUtil:52 - connected to db
+2021-03-12 15:49:38 DEBUG Scratch:132 - pstmt created
+2021-03-12 15:49:38 DEBUG Scratch:150 - Query executed
+2021-03-12 15:49:38 DEBUG Scratch:178 - [4, 3.14, 2021-03-10, null, More Pi Day pies!!, 5, null, 1, 4]
+2021-03-12 15:49:38 DEBUG Scratch:178 - [5, 3.14, 2021-03-11, null, Even More Pi Day pies!!!!, 5, null, 1, 4]
+2021-03-12 15:49:38 DEBUG Scratch:178 - [1, 3.14, 2021-03-10, null, pi day food, 5, org.postgresql.jdbc.PgResultSet@1f0f1111, 2, 4]
+2021-03-12 15:49:38 DEBUG Scratch:178 - [2, 3.14, 2021-03-10, null, pi day food, 5, org.postgresql.jdbc.PgResultSet@49c386c8, 3, 4]
+2021-03-12 15:49:38 DEBUG Scratch:182 - [[4, 3.14, 2021-03-10, null, More Pi Day pies!!, 5, null, 1, 4], [5, 3.14, 2021-03-11, null, Even More Pi Day pies!!!!, 5, null, 1, 4], [1, 3.14, 2021-03-10, null, pi day food, 5, org.postgresql.jdbc.PgResultSet@1f0f1111, 2, 4], [2, 3.14, 2021-03-10, null, pi day food, 5, org.postgresql.jdbc.PgResultSet@49c386c8, 3, 4]]
+2021-03-12 15:50:31 INFO  ConnectionUtil:42 - connection successful
+2021-03-12 15:50:31 INFO  ConnectionUtil:52 - connected to db
+2021-03-12 15:50:31 DEBUG Scratch:132 - pstmt created
+2021-03-12 15:50:31 DEBUG Scratch:150 - Query executed
+2021-03-12 15:50:31 DEBUG Scratch:178 - [4, 3.14, 2021-03-10, null, More Pi Day pies!!, 5, null, 1, 4]
+2021-03-12 15:50:31 DEBUG Scratch:178 - [5, 3.14, 2021-03-11, null, Even More Pi Day pies!!!!, 5, null, 1, 4]
+2021-03-12 15:50:31 WARN  Scratch:185 - Unable insert reimbursement into the database
+org.postgresql.util.PSQLException: ResultSet not positioned properly, perhaps you need to call next.
+	at org.postgresql.jdbc.PgResultSet.checkResultSet(PgResultSet.java:2786)
+	at org.postgresql.jdbc.PgResultSet.getString(PgResultSet.java:1887)
+	at org.postgresql.jdbc.PgResultSet.getString(PgResultSet.java:2480)
+	at com.revature.scratch.Scratch.main(Scratch.java:171)
+2021-03-12 15:51:56 INFO  ConnectionUtil:42 - connection successful
+2021-03-12 15:51:56 INFO  ConnectionUtil:52 - connected to db
+2021-03-12 15:51:56 DEBUG Scratch:132 - pstmt created
+2021-03-12 15:51:56 DEBUG Scratch:150 - Query executed
+2021-03-12 15:51:56 DEBUG Scratch:179 - [4, 3.14, 2021-03-10, null, More Pi Day pies!!, 5, null, 1, 4]
+2021-03-12 15:51:56 DEBUG Scratch:179 - [5, 3.14, 2021-03-11, null, Even More Pi Day pies!!!!, 5, null, 1, 4]
+2021-03-12 15:51:56 DEBUG Scratch:179 - [1, 3.14, 2021-03-10, null, pi day food, 5, gavrila, 2, 4]
+2021-03-12 15:51:56 DEBUG Scratch:179 - [2, 3.14, 2021-03-10, null, pi day food, 5, gavrila, 3, 4]
+2021-03-12 15:51:56 DEBUG Scratch:183 - [[4, 3.14, 2021-03-10, null, More Pi Day pies!!, 5, null, 1, 4], [5, 3.14, 2021-03-11, null, Even More Pi Day pies!!!!, 5, null, 1, 4], [1, 3.14, 2021-03-10, null, pi day food, 5, gavrila, 2, 4], [2, 3.14, 2021-03-10, null, pi day food, 5, gavrila, 3, 4]]
+2021-03-12 16:16:27 INFO  ConnectionUtil:42 - connection successful
+2021-03-12 16:16:27 INFO  ConnectionUtil:52 - connected to db
+2021-03-12 16:16:27 DEBUG Scratch:137 - pstmt created
+2021-03-12 16:16:27 DEBUG Scratch:162 - Query executed
+2021-03-12 16:16:27 DEBUG Scratch:192 - [4, 3.14, 2021-03-10, null, More Pi Day pies!!, 5, null, 1, 4]
+2021-03-12 16:16:27 DEBUG Scratch:192 - [5, 3.14, 2021-03-11, null, Even More Pi Day pies!!!!, 5, null, 1, 4]
+2021-03-12 16:16:27 DEBUG Scratch:192 - [1, 3.14, 2021-03-10, null, pi day food, 5, gavrila, 2, 4]
+2021-03-12 16:16:27 DEBUG Scratch:192 - [2, 3.14, 2021-03-10, null, pi day food, 5, gavrila, 3, 4]
+2021-03-12 16:16:27 DEBUG Scratch:196 - [[4, 3.14, 2021-03-10, null, More Pi Day pies!!, 5, null, 1, 4], [5, 3.14, 2021-03-11, null, Even More Pi Day pies!!!!, 5, null, 1, 4], [1, 3.14, 2021-03-10, null, pi day food, 5, gavrila, 2, 4], [2, 3.14, 2021-03-10, null, pi day food, 5, gavrila, 3, 4]]
