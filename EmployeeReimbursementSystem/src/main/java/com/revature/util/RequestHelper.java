@@ -15,13 +15,16 @@ import org.apache.log4j.Logger;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
+import com.revature.models.ApproveRequestTemplate;
 import com.revature.models.Employee;
 import com.revature.models.ErrorMsg;
 import com.revature.models.LoginInfo;
+import com.revature.models.ManagerViewTemplate;
 import com.revature.models.Reimbursement;
 import com.revature.models.Response;
 import com.revature.models.ViewTemplate;
 import com.revature.services.EmployeeService;
+import com.revature.services.ManagerService;
 
 public class RequestHelper {
 
@@ -121,14 +124,25 @@ public class RequestHelper {
 		if (e!=null) {
 			HttpSession ses=req.getSession();
 			ses.setAttribute("userId", e.getUserId());
-
 			res.setStatus(200);
 			
+			ErrorMsg err=new ErrorMsg("None");
+
 			PrintWriter pw=res.getWriter();
 			res.setContentType("application/json");
 			
-			pw.println(om.writeValueAsString(e));
+			Response r=new Response();
+			r.setE(e);
+			r.setErr(err);
+			
+			String bothJson=new Gson().toJson(r);
+			
+			log.debug(bothJson); 
+			
+			pw.println(bothJson);
+
 			log.info(username+ " has successfully logged in");
+		
 		}else {
 			res.setStatus(204);
 		}
@@ -181,6 +195,21 @@ public class RequestHelper {
 		res.setStatus(200);
 	}
 	
+	public static void loggingOut(HttpServletRequest req, HttpServletResponse res) throws IOException {
+		
+		HttpSession session=req.getSession(false); //I'm capturing the session, but if there isn't one, I don't create a new one.
+	
+		log.info("Processing logout");
+	
+		if (session!=null) {
+			String username=(String) session.getAttribute("userId");
+			log.info(username + " has logged out");
+			session.invalidate();
+		}
+	
+		res.setStatus(200);
+		
+	}
 	
 	public static void empoloyeeView(HttpServletRequest req, HttpServletResponse res) throws IOException {
 		String body=RequestHelperUtil.processEmployeeLogin(req);
@@ -210,5 +239,96 @@ public class RequestHelper {
 		pw.println(bothJson);
 		
 	}
+	
+	public static void managerView(HttpServletRequest req, HttpServletResponse res) throws IOException {
+		String body=RequestHelperUtil.processEmployeeLogin(req);
+		log.debug("Employee Reimbursement info: "+body);
+		
+		ManagerViewTemplate view=om.readValue(body, ManagerViewTemplate.class);
+		
+		Employee e=new Employee(view.getUserId(), view.getUsername(), view.getFirstName(), view.getLastName(), view.getEmail(), view.getRoleId());
+		
+		PrintWriter pw=res.getWriter();
+		res.setContentType("application/json");
+		
+		Response r=new Response();;
+		r.setE(e);
+		if (view.getEmployeeId()==0) {
+			r.setList(ManagerService.managerView(view.getView()));			
+		}else {
+			r.setList(ManagerService.managerView(view.getEmployeeId(), view.getView()));
+		}
+		
+		if (r.getList().size()>0) {
+			r.setErr(new ErrorMsg("None"));
+			res.setStatus(200);
+		}else {
+			r.setErr(new ErrorMsg("Fail"));
+			res.setStatus(204);
+		}
+
+		String bothJson=new Gson().toJson(r);
+		log.debug(bothJson); 
+		pw.println(bothJson);
+		
+	}
+	
+	
+	public static void viewEmployees(HttpServletRequest req, HttpServletResponse res) throws IOException {
+		String body=RequestHelperUtil.processEmployeeLogin(req);
+		log.debug("Employee Reimbursement info: "+body);
+		
+		Employee e=om.readValue(body, Employee.class);
+		
+		PrintWriter pw=res.getWriter();
+		res.setContentType("application/json");
+		
+		Response r=new Response();;
+		r.setE(e);
+		r.setList(ManagerService.viewEmployees());
+		
+		if (r.getList().size()>0) {
+			r.setErr(new ErrorMsg("None"));
+			res.setStatus(200);
+		}else {
+			r.setErr(new ErrorMsg("Fail"));
+			res.setStatus(204);
+		}
+
+		String bothJson=new Gson().toJson(r);
+		log.debug(bothJson); 
+		pw.println(bothJson);
+		
+	}
+
+	
+	public static void approve(HttpServletRequest req, HttpServletResponse res) throws IOException {
+		String body=RequestHelperUtil.processEmployeeLogin(req);
+		log.debug("Employee Reimbursement Approval info: "+body);
+		
+		ApproveRequestTemplate approve=om.readValue(body, ApproveRequestTemplate.class);
+		
+		Employee e=new Employee(approve.getUserId(), approve.getUsername(), approve.getFirstName(), approve.getLastName(), approve.getEmail(), approve.getRoleId());
+		
+		
+		PrintWriter pw=res.getWriter();
+		res.setContentType("application/json");
+		
+		Response r=new Response();;
+		r.setE(e);
+		if (ManagerService.approve(approve.getApprove(), approve.getUserId(), approve.getReimId())>0) {
+			r.setErr(new ErrorMsg("None"));
+			res.setStatus(200);
+		}else {
+			r.setErr(new ErrorMsg("Fail"));
+			res.setStatus(204);
+		}
+
+		String bothJson=new Gson().toJson(r);
+		log.debug(bothJson); 
+		pw.println(bothJson);
+		
+	}
+	
 	
 }

@@ -28,12 +28,23 @@
                     <th>Role</th>
                 </thead>
             </tr>
+            <tbody id="body">
+            
+            
+            
+            </tbody>
         </table>
     </div>
 
-        <button type="logout" class="btn btn-primary" id="logout">Logout</button>
+    <form onsubmit="logout(event.preventDefault())">
+    	<button type="submit" class="btn btn-primary" id="submit">Logout</button>
+	</form>
+	
+	<form onsubmit="managerHome(event.preventDefault())">
+    	<button type="submit" class="btn btn-primary" id="submit">Manager Home</button>
+	</form>
 
-        <button type="button" class="btn btn-primary" id="managerHome">Manager Home</button>
+<script src="scripts/managerEmployees.js" type="text/javascript"></script>
 
 </body>
 </html>

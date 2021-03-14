@@ -17,30 +17,41 @@
     
     <!-- import pending requests (pending requests have a value of pending), include a drop down option, default is pending, approve, dissaprove
     submit button gets value from drop down. if approve or dissaprove, update status-->
-    <div>
-        <table id="viewRequests">
-            <tr>
-                <thead>
-                    <th>Reimbursment ID</th>
-                    <th>Reimbursment Amount</th>
-                    <th>Reimbursment Date Submitted</th>
-                    <th>Reimbursment Date Resolved</th>
-                    <th>Reimbursment Description</th>
-                    <!-- <th>Reimbursment Receipt</th> -->
-                    <th>Reimbursment Author</th>
-                    <th>Reimbursment Resolver</th>
-                    <th>Reimbursment Status</th>
-                    <th>Reimbursment Type</th>
-                    <th>Approve?</th>
-                </thead>
-            </tr>
-        </table>
-        <button type="submit" class="btn btn-primary" id="submit">Submit</button>    
+    <div id="view">
+	     <form onsubmit="approve(event.preventDefault())">
+    	    <table id="viewRequests">
+        	    <tr>
+            	    <thead>
+                    	<th>Reimbursement ID</th>
+                    	<th>Reimbursement Amount</th>
+                    	<th>Reimbursement Date Submitted</th>
+                    	<th>Reimbursement Date Resolved</th>
+                    	<th>Reimbursement Description</th>
+                    	<!-- <th>Reimbursement Receipt</th> -->
+                    	<th>Reimbursement Author</th>
+                    	<th>Reimbursement Resolver</th>
+                    	<th>Reimbursement Status</th>
+                    	<th>Reimbursement Type</th>
+                    	<th>Approve?</th>
+                	</thead>
+            	</tr>
+            	<tbody id="body">
+            
+            	</tbody>
+        	</table>
+       		<button type="submit" class="btn btn-primary" id="submit">Submit</button>  
+       	 </form>  
     </div>
 
-        <button type="logout" class="btn btn-primary" id="logout">Logout</button>
+    <form onsubmit="logout(event.preventDefault())">
+    	<button type="submit" class="btn btn-primary" id="submit">Logout</button>
+	</form>
+	
+	<form onsubmit="managerHome(event.preventDefault())">
+    	<button type="submit" class="btn btn-primary" id="submit">Manager Home</button>
+	</form>
 
-        <button type="button" class="btn btn-primary" id="managerHome">Manager Home</button>
+<script src="scripts/managerApprove.js" type="text/javascript"></script> 
 
 </body>
 </html>

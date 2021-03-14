@@ -111,11 +111,23 @@ function managerLogin(){
         if (this.readyState === 4 && this.status === 200) {
             console.log("success");
 
-            sessionStorage.setItem('currentUser', this.responseText)
+			console.log("heading to manager Home");
+
+            console.log("standard");	
+			
+			sessionStorage.setItem('userId', this.responseText)
+			
+			let SesInfo = sessionStorage.getItem('userId');
 
             window.location = "http://localhost:8080/EmployeeReimbursementSystem/managerHome.html";
 
             console.log(sessionStorage.getItem('currentUser'));
+            
+            let SesInfoOjb = JSON.parse(SesInfo);
+			
+			console.log(`the current user is: ${SesInfoOjb.e.username}`);
+
+			console.log(`the current err is: ${SesInfoOjb.err.err}`);
         }
 
         if (this.readyState === 4 && this.status === 204) { // 204 means NO CONTENT FOUND (but connection was made)

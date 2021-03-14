@@ -55,3 +55,19 @@ if (Number(role)==1){
 function update(){
 			window.location = "http://localhost:8080/EmployeeReimbursementSystem/employeeInformationUpdate.html";
 }
+
+function employeeHome(){
+	window.location = "http://localhost:8080/EmployeeReimbursementSystem/employeeHome.html";
+}
+
+function logout(){
+
+		let xhr = new XMLHttpRequest();
+		
+		xhr.open("POST", "http://localhost:8080/EmployeeReimbursementSystem/logout");
+		xhr.send();
+		
+		sessionStorage.removeItem('userId');
+		window.location = "http://localhost:8080/EmployeeReimbursementSystem/";
+		
+}

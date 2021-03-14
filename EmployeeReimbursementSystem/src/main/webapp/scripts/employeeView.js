@@ -1,5 +1,4 @@
 function Reimbursements(){
-
 	let SesInfo = sessionStorage.getItem('userId');
 
 	let firstName;
@@ -8,7 +7,7 @@ function Reimbursements(){
 	let userId;
 	let email;
 	let role;
-	let view=number(document.getElementById('view').value);
+	let view=Number(document.getElementById('viewChoice').value);
 
 	if (SesInfo === null) {
 		window.location = "http://localhost:8080/EmployeeReimbursementSystem/index.html";
@@ -60,8 +59,39 @@ function Reimbursements(){
 	xhr.onreadystatechange = function() {
         if (this.readyState === 4 && this.status === 200) {
             console.log("success");
-
-		
+			
+			sessionStorage.setItem('userId', this.responseText)
+			
+			let SesInfo = sessionStorage.getItem('userId');
+			
+			console.log(`the current out is: ${SesInfo}`);
+			
+			let SesInfoOjb = JSON.parse(SesInfo);
+			
+			reimbursements=SesInfoOjb.list
+			console.log(reimbursements);
+			
+			let table=document.getElementById("viewRequests");
+			let tableBody=document.getElementById("body");
+			tableBody.remove()
+			
+			let newTableBody=document.createElement("tbody");
+			newTableBody.setAttribute("id", "body");
+			table.appendChild(newTableBody);
+			
+			reimbursements.forEach( (reimbursement) => {
+			
+				//Create rows:
+				let tableRow = document.createElement("tr");
+	        	newTableBody.appendChild(tableRow);
+				
+				reimbursement.forEach((value) => {
+				
+					let tableData = document.createElement("td");
+            		tableRow.appendChild(tableData);
+            		tableData.innerHTML = value;
+				});			
+			});
 						
         }
 
@@ -81,4 +111,19 @@ function Reimbursements(){
     xhr.send(JSON.stringify(viewTemplate))
 	console.log("Done");
 
+}
+
+function employeeHome(){
+	window.location = "http://localhost:8080/EmployeeReimbursementSystem/employeeHome.html";
+}
+
+function logout(){
+
+		let xhr = new XMLHttpRequest();
+		
+		xhr.open("POST", "http://localhost:8080/EmployeeReimbursementSystem/logout");
+		xhr.send();
+		
+		sessionStorage.removeItem('userId');
+		window.location = "http://localhost:8080/EmployeeReimbursementSystem/";		
 }

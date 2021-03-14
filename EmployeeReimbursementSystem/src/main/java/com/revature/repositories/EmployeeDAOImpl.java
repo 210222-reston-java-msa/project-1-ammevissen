@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -159,12 +160,34 @@ public class EmployeeDAOImpl implements EmployeeDAO{
 			ResultSet result=pstmt.executeQuery();
 			log.debug("Query executed");
 			
+			
+			//https://howtodoinjava.com/java/date-time/convert-string-to-localdate/			
 			while(result.next()) {
 				List<Object> employeeReimbursement= new ArrayList<Object>();
 				employeeReimbursement.add(result.getInt("reimb_id"));
 				employeeReimbursement.add(result.getDouble("reimb_amount"));
-				employeeReimbursement.add(result.getObject("reimb_submitted", LocalDate.class));
-				employeeReimbursement.add(result.getObject("reimb_resolved", LocalDate.class));
+				
+				
+				if (result.getObject("reimb_submitted", LocalDate.class)!=null) {
+					
+					String date=result.getObject("reimb_submitted", LocalDate.class).format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+					employeeReimbursement.add(date);
+					
+				}else {
+					employeeReimbursement.add(null);
+				}
+				
+				if (result.getObject("reimb_resolved", LocalDate.class)!=null) {
+					
+					String date=result.getObject("reimb_resolved", LocalDate.class).format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+					employeeReimbursement.add(date);
+					
+				}else {
+					employeeReimbursement.add(null);
+				}
+				
+//				employeeReimbursement.add(result.getObject("reimb_submitted", LocalDate.class));
+//				employeeReimbursement.add(result.getObject("reimb_resolved", LocalDate.class));
 				employeeReimbursement.add(result.getString("reimb_description"));
 				employeeReimbursement.add(result.getInt("reimb_author"));
 				

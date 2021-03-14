@@ -107,7 +107,45 @@ ers_last_name='mevissen'
 where ers_users_id =5;
 
 UPDATE ers_users
-set ers_password='password',
+set ers_password='p',
 ers_first_name='andrew',
 ers_last_name='mev'
 where ers_users_id =5;
+
+
+UPDATE ers_users
+set ers_password='p'
+where ers_users_id =5;
+
+UPDATE ers_reimbursement
+set REIMB_STATUS_ID =2,
+reimb_resolver=6
+where REIMB_ID =1;
+
+UPDATE ers_reimbursement
+set REIMB_STATUS_ID =3,
+reimb_resolver=6
+where REIMB_ID =2;
+
+
+
+SELECT ers_last_name
+from ers_users
+where ers_users_id=6;
+
+SELECT *
+from ers_reimbursement
+where reimb_author =5;
+
+SELECT *
+from ers_reimbursement
+where reimb_author =5 AND REIMB_STATUS_ID =1;
+
+SELECT *
+from ers_reimbursement
+where REIMB_STATUS_ID =2 OR REIMB_STATUS_ID =1;
+
+select *
+from ers_reimbursement 
+left join ers_users
+on ers_reimbursement.reimb_resolver=ers_users.ers_users_id;

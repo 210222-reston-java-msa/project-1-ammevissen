@@ -11,7 +11,7 @@ function managerChoice(){
 	
 	
 	switch (choice){
-		case "approve reimbursement":
+		case "approve reimbursements":
 			console.log("choice 1");
 			window.location = "http://localhost:8080/EmployeeReimbursementSystem/managerApprove.html";
 			break;
@@ -24,4 +24,15 @@ function managerChoice(){
 			window.location = "http://localhost:8080/EmployeeReimbursementSystem/managerView.html";
 			break;	
 	}
+}
+
+function logout(){
+
+		let xhr = new XMLHttpRequest();
+		
+		xhr.open("POST", "http://localhost:8080/EmployeeReimbursementSystem/logout");
+		xhr.send();
+		
+		sessionStorage.removeItem('userId');
+		window.location = "http://localhost:8080/EmployeeReimbursementSystem/";		
 }

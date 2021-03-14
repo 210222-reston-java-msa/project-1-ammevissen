@@ -15,46 +15,71 @@
 
 </head>
 
+</head>
+
 <body>
     <div id="view">
-        <form>
-            <p>Which reimbursments would you like to view?:</p>
-            <select name="view" id="view">
-                <option value="">Please Select Reimbursments To View</option>
-                <option value="view approved reimbursment requests">View Approved Reimbursment Requests</option>
-                <option value="view unapproved reimbursment requests">View Unapproved Reimbursment Requests</option>
-                <option value="view all resolved reimbursment requests">View All Resolved Reimbursment Requests</option>
-                <option value="view pending reimbursment requests">View Pending Reimbursment Requests</option>
-                <option value="view all reimbursment requests">View All Reimbursment Requests</option>
-            </select>
+        <form onsubmit="Reimbursements(event.preventDefault())">
+            <label>Which employee's information would you like to view (enter 0 for all)</label><br />
+            <input type="number" name="userId" id="userId" min=0 step=1 placeholder="Enter UserID"><br />
+            <label>Which reimbursments would you like to view?</label><br />
+            <select name="view" id="viewChoice">
+                <option value="">Please Select Reimbursements To View</option>
+				<option value="0">View All Reimbursement Requests</option>
+                <option value="5">View All Resolved Reimbursement Requests</option> <!-- 2+3=5 -->
+                <option value="2">View Approved Reimbursement Requests</option>
+                <option value="1">View Pending Reimbursement Requests</option>
+                <option value="3">View Rejected Reimbursement Requests</option>
+            </select><br />
             <!-- ++sort by date, status, amount, type, employee -->
+	        <button type="submit" class="btn btn-primary" id="submit">Submit</button>
+
         </form>
-        <button type="submit" class="btn btn-primary" id="submit">Submit</button>
 
     </div>
 
-    <button type="button" class="btn btn-primary" id="logout">Logout</button>
-
-    <button type="button" class="btn btn-primary" id="managerHome">Manager Home</button>
+    <form onsubmit="logout(event.preventDefault())">
+    	<button type="submit" class="btn btn-primary" id="submit">Logout</button>
+	</form>
+	
+	<form onsubmit="managerHome(event.preventDefault())">
+    	<button type="submit" class="btn btn-primary" id="submit">Manager Home</button>
+	</form>
 
     <div id="view">
         <table id="viewRequests">
             <tr>
                 <thead>
-                    <th>Reimbursment ID</th>
-                    <th>Reimbursment Amount</th>
-                    <th>Reimbursment Date Submitted</th>
-                    <th>Reimbursment Date Resolved</th>
-                    <th>Reimbursment Description</th>
-                    <!-- <th>Reimbursment Receipt</th> -->
-                    <th>Reimbursment Author</th>
-                    <th>Reimbursment Resolver</th>
-                    <th>Reimbursment Status</th>
-                    <th>Reimbursment Type</th>
+                    <th>Reimbursement ID</th>
+                    <th>Reimbursement Amount</th>
+                    <th>Reimbursement Date Submitted</th>
+                    <th>Reimbursement Date Resolved</th>
+                    <th>Reimbursement Description</th>
+                    <!-- <th>Reimbursement Receipt</th> -->
+                    <th>Reimbursement Author</th>
+                    <th>Reimbursement Resolver</th>
+                    <th>Reimbursement Status</th>
+                    <th>Reimbursement Type</th>
+                    <!-- <th>ID</th> -->
+                    <!-- <th>Amount</th> -->
+                    <!-- <th>Date Submitted</th> -->
+                    <!-- <th>Date Resolved</th> -->
+                    <!-- <th>Description</th> -->
+                    <!-- <th>Receipt</th> -->
+                    <!-- <th>Author</th> -->
+                    <!-- <th>Resolver</th> -->
+                    <!-- <th>Status</th> -->
+                    <!-- <th>Type</th> -->
+
                 </thead>
             </tr>
+            <tbody id="body">
+            
+            </tbody>
         </table>
     </div>
+
+<script src="scripts/managerView.js" type="text/javascript"></script>
 
 </body>
 </html>

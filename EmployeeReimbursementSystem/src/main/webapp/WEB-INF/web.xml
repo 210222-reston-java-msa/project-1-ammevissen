@@ -19,8 +19,10 @@
 	<url-pattern>/employeeReimbursement</url-pattern>
 	<url-pattern>/employeeUpdate</url-pattern>
 	<url-pattern>/employeeView</url-pattern>
+	<url-pattern>/managerView</url-pattern>
+	<url-pattern>/viewEmployees</url-pattern>
+	<url-pattern>/approve</url-pattern>
 	<url-pattern>/error</url-pattern>	
-	
   </servlet-mapping>
   
 </web-app>

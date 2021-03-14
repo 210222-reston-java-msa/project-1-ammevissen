@@ -54,7 +54,23 @@ public class FrontController extends HttpServlet {
 			log.debug("heading to Employee View");
 			RequestHelper.empoloyeeView(request, response);
 			break;
-				
+		case "logout":
+			log.debug("logging out");
+			RequestHelper.loggingOut(request, response);
+			break;
+		case "managerView":
+			log.debug("Manager View Reimbursements");
+			RequestHelper.managerView(request, response);
+			break;
+		case "viewEmployees":
+			log.debug("View Employees");
+			RequestHelper.viewEmployees(request, response);
+			break;
+		case "approve":
+			log.debug("Approving requests");
+			RequestHelper.approve(request, response);
+			break;
+			
 				
 		}
 		System.out.println("doGet");

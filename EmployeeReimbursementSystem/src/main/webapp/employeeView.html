@@ -19,7 +19,7 @@
     <div id="view">
         <form onsubmit="Reimbursements(event.preventDefault())">
             <p>Which reimbursments would you like to view?:</p>
-            <select name="view" id="view">
+            <select name="view" id="viewChoice">
                 <option value="">Please Select Reimbursements To View</option>
                 <option value="0">View All Reimbursement Requests</option>
                 <option value="2">View Approved Reimbursement Requests</option>
@@ -34,9 +34,14 @@
 
     </div>
 
-    <button type="button" class="btn btn-primary" id="logout">Logout</button>
+    <form onsubmit="logout(event.preventDefault())">
+    	<button type="submit" class="btn btn-primary" id="submit">Logout</button>
+	</form>
+	
+	<form onsubmit="employeeHome(event.preventDefault())">
+    	<button type="submit" class="btn btn-primary" id="submit">Employee Home</button>
+	</form>
 
-    <button type="button" class="btn btn-primary" id="employeeHome">Employee Home</button>
 
     <div id="view">
         <table id="viewRequests">
@@ -54,6 +59,9 @@
                     <th>Reimbursement Type</th>
                 </thead>
             </tr>
+            <tbody id="body">
+            
+            </tbody>
         </table>
     </div>
 

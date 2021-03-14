@@ -23,3 +23,15 @@ function employeeChoice(){
 			break;		
 	}	
 }
+
+function logout(){
+
+		let xhr = new XMLHttpRequest();
+		
+		xhr.open("POST", "http://localhost:8080/EmployeeReimbursementSystem/logout");
+		xhr.send();
+		
+		sessionStorage.removeItem('userId');
+		window.location = "http://localhost:8080/EmployeeReimbursementSystem/";
+		
+}
