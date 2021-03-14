@@ -2,11 +2,12 @@ package com.revature.services;
 
 import java.util.List;
 
+import com.revature.repositories.ManagerDAO;
 import com.revature.repositories.ManagerDAOImpl;
 
 public class ManagerService {
 
-	public static ManagerDAOImpl mDAO=new ManagerDAOImpl();
+	public static ManagerDAO mDAO=new ManagerDAOImpl();
 	
 	
 	public static List<Object> managerView(int view){

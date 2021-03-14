@@ -21,6 +21,7 @@ public class EmployeeDAOImpl implements EmployeeDAO{
 
 	private static Logger log = Logger.getLogger(EmployeeDAO.class);
 	
+	@Override
 	public Employee findByUsername(String username) {
 		Employee e=new Employee();
 		
@@ -59,8 +60,8 @@ public class EmployeeDAOImpl implements EmployeeDAO{
 		return e;
 	}
 	
-	
-	public static int insertEmployeeReimbursement(Reimbursement reim) {
+	@Override
+	public int insertEmployeeReimbursement(Reimbursement reim) {
 
 		try {
 			Connection conn=ConnectionUtil.getConnection();
@@ -84,7 +85,8 @@ public class EmployeeDAOImpl implements EmployeeDAO{
 		}
 	}
 	
-	public static int insertEmployeeUpdate(Employee e) {
+	@Override
+	public int insertEmployeeUpdate(Employee e) {
 		try {
 			Connection conn=ConnectionUtil.getConnection();
 		
@@ -112,7 +114,8 @@ public class EmployeeDAOImpl implements EmployeeDAO{
 		
 	}
 	
-	public static List<Object> employeeView(int e, int view){
+	@Override
+	public List<Object> employeeView(int e, int view){
 		List<Object> employeeReimbursements= new ArrayList<Object>();
 		
 		try {

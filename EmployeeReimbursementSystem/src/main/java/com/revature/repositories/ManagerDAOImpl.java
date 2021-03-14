@@ -18,8 +18,8 @@ public class ManagerDAOImpl implements ManagerDAO {
 	
 	private static Logger log = Logger.getLogger(ManagerDAOImpl.class);
 
-
-	public static List<Object> managerView(int view){
+	@Override
+	public List<Object> managerView(int view){
 		List<Object> employeeReimbursements= new ArrayList<Object>();
 		
 		try {
@@ -139,8 +139,8 @@ public class ManagerDAOImpl implements ManagerDAO {
 		return employeeReimbursements;
 	}
 
-	
-	public static List<Object> viewEmployees(){
+	@Override
+	public List<Object> viewEmployees(){
 		List<Object> employees= new ArrayList<Object>();
 		
 		try {
@@ -182,7 +182,8 @@ public class ManagerDAOImpl implements ManagerDAO {
 		return employees;
 	}
 	
-	public static int reimApprove(int approve, int e,  int ReimId) {
+	@Override
+	public int reimApprove(int approve, int e,  int ReimId) {
 		
 		try {
 			Connection conn=ConnectionUtil.getConnection();
