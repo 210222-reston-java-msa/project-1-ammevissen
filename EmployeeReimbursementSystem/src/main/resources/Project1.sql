@@ -56,16 +56,6 @@ constraint ers_reimbursement_type_fk foreign key (reimb_type_id) references ers_
 );
 
 
-INSERT into  ers_users_roles(ers_user_role_id, user_role)
-values (1, 'employee'),
-(2, 'manager');
-
-
-INSERT INTO ers_users(ers_username, ers_password, ers_first_name, ers_last_name, ers_email, ers_role_id)
-values
-('ammevissen', 'p@55w0rd', 'andy', 'mevissen', 'ammevissen@email', 1),
-('sgavrila', 'p@55w0rd', 'sophia', 'gavrila', 'sgavrila@email', 2);
-
 insert into ers_reimbursement_status(reimb_status_id, reimb_status)
 values(1, 'pending'),
 (2, 'approved'),
@@ -77,8 +67,26 @@ values(1, 'tavel'),
 (3, 'computer'),
 (4, 'other');
 
+
+INSERT into  ers_users_roles(ers_user_role_id, user_role)
+values (1, 'employee'),
+(2, 'manager');
+
+
+INSERT INTO ers_users(ers_username, ers_password, ers_first_name, ers_last_name, ers_email, ers_role_id)
+values
+('ammevissen', 'p@55w0rd', 'andy', 'mevissen', 'ammevissen@email', 1),
+('smevisen', 'p@55w0rd', 'shadow', 'mevissen', 'smevissen@email', 1),
+('sgavrila', 'p@55w0rd', 'sophia', 'gavrila', 'sgavrila@email', 2);
+
+
 INSERT into ers_reimbursement(reimb_amount, reimb_description, reimb_author, reimb_status_id, reimb_type_id)
-values(3.14, 'pi day food', 5, 1, 4);
+values(3.14, 'Pi Day food', 1, 1, 4),
+(3.14, 'Pi Day pizza', 1, 1, 4),
+(3.14, 'Pi Day pies', 1, 1, 4),
+(3.14, 'Pi Day food', 2, 1, 4),
+(3.14, 'Pi Day pizza', 2, 1, 4),
+(3.14, 'Pi Day pies', 2, 1, 4);
 
 
 SELECT *
@@ -124,7 +132,8 @@ where REIMB_ID =1;
 
 UPDATE ers_reimbursement
 set REIMB_STATUS_ID =3,
-reimb_resolver=6
+reimb_resolver=6, 
+reimb_resolved=current_date
 where REIMB_ID =2;
 
 
@@ -149,3 +158,8 @@ select *
 from ers_reimbursement 
 left join ers_users
 on ers_reimbursement.reimb_resolver=ers_users.ers_users_id;
+
+
+select *
+from ers_reimbursement 
+left join ers_users

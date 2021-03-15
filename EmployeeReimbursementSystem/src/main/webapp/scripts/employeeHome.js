@@ -1,16 +1,15 @@
 function employeeChoice(){
 
+	//getting user choice
 	console.log("get task choice");
 	let choice=document.getElementById('task').value;
-	
 	console.log(`employee task is ${task}`);
 
 	let userID = sessionStorage.getItem('userId');
-
 	console.log(`the current user is: ${userID}`);
 
 	
-	
+	//Going to page user picked
 	switch (choice){
 		case "submit a reimbursement request":
 			window.location = "http://localhost:8080/EmployeeReimbursementSystem/employeeReimbursementRequest.html";
@@ -24,6 +23,8 @@ function employeeChoice(){
 	}	
 }
 
+
+//Logging out
 function logout(){
 
 		let xhr = new XMLHttpRequest();

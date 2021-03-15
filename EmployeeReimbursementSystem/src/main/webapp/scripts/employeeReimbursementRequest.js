@@ -1,5 +1,7 @@
 function employeeReimbursementRequest(){
 
+
+	//Getting employee information
 	console.log("Employee Reimbursement Request");
 
 	let amount=document.getElementById('amount').value;
@@ -10,24 +12,41 @@ function employeeReimbursementRequest(){
 	let description=document.getElementById('description').value;
 
 
+	console.log("Starting Manager Reimbursement Viewing");
 	let SesInfo = sessionStorage.getItem('userId');
+	
 	let author;
+	let	firstName;
+	let lastName;
+	let username;
+	let userId;
+	let email;
+	let role;
+	
+
+	
 
 	if (SesInfo === null) {
 		window.location = window.location = "http://localhost:8080/EmployeeReimbursementSystem/index.html";;
 	} else {
 		
-		let SesInfoOjb = JSON.parse(SesInfo); // parse the data that we see == to that attribute
-		
+		let SesInfoOjb = JSON.parse(SesInfo); 
+		e=SesInfoOjb.e;
+	
 		console.log(SesInfoOjb.userId);
 		
 		if (SesInfoOjb != null) {
-			author=SesInfoOjb.userId;
+			firstName=e.firstName;
+			lastName=e.lastName;
+			username=e.username;
+			userId=e.userId;
+			email=e.email;
+			role=e.roleId;
 		}
 	}
 		
 
-
+	//Getting view choice
 	//https://www.javascripttutorial.net/javascript-dom/javascript-radio-button/    
     for (const option of options){
         if (option.checked){
@@ -39,68 +58,54 @@ function employeeReimbursementRequest(){
     console.log(`amount: ${amount}`);
     console.log(`type: ${type}`);
     console.log(`description: ${description}`);
-	console.log(`author: ${author}`);
+	console.log(`author: ${userId}`);
     
-//	ses.setAttribute("userId", e.getUserId());
-//	ses.setAttribute("username", e.getUsername());
-//	ses.setAttribute("firstName", e.getFirstName());
-//	ses.setAttribute("lastName", e.getLastName());
-//	ses.setAttribute("email", e.getEmail());
-//	ses.setAttribute("roleId", e.getRoleId());
-
-//	int id, double amount, LocalDate submitted, LocalDate resolved, String description, int author,
-//			int resolver, int statusId, int typeId
-
 	
-	
-	
-	
+	//Creating Reimbursement Request template to send information to backend
 	let reimbursementRequest={
+		userId:userId,
+		username:username,
+		firstName:firstName,
+		lastName:lastName,
+		email:email,
+		roleId:role,
 		amount:amount,
 		description:description,
-		author:author,
 		statusId:1,
 		typeId:type
 	}
 	
-	
+	//Creating request object
 	console.log("step 1");
 	let xhr=new XMLHttpRequest();
 
+	//Creating request completed function
 	console.log("step 2");	
 	xhr.onreadystatechange = function() {
         if (this.readyState === 4 && this.status === 200) {
             console.log("success");
 
-			//console.log("heading to employee Home");
-            //window.location = "http://localhost:8080/EmployeeReimbursementSystem/employeeHome.html";
+			console.log("heading to employee Home");
+            window.location = "http://localhost:8080/EmployeeReimbursementSystem/employeeHome.html";
         }
+	}
 
-        if (this.readyState === 4 && this.status === 204) { // 204 means NO CONTENT FOUND (but connection was made)
-			console.log("failed to be accepted, make sure amount is a valid number")
-			let error=sessionStorage.getItem('error');
-            //console.log("failed to find user");
-
-            //let childDiv = document.getElementById('warningText');
-            //childDiv.textContent = "Failed to login!  Username of Password is incorrect"
-        }
-    }
-
+	//Invoking backend method
 	console.log("step 3");
-    // 3. xhr.open("POST, "http:/localhost:8080/EmployeeDBServlet/url for the loginServlet")
     xhr.open("POST", "http://localhost:8080/EmployeeReimbursementSystem/employeeReimbursement")
 
+	//Passing information to backend
 	console.log("step 4");
-    // 4. xhr.send();
     xhr.send(JSON.stringify(reimbursementRequest))
 	console.log("Done");
 }
 
-
+//Going to employee home page
 function employeeHome(){
 	window.location = "http://localhost:8080/EmployeeReimbursementSystem/employeeHome.html";
 }
 
+//Logging out
 function logout(){
 
 		let xhr = new XMLHttpRequest();

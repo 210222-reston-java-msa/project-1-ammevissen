@@ -1,4 +1,7 @@
 //on page startup 
+
+
+//Getting user information from session
 let SesInfo = sessionStorage.getItem('userId');
 console.log(`the current user is: ${SesInfo}`);
 
@@ -13,7 +16,7 @@ if (SesInfo === null) {
 	window.location = window.location = "http://localhost:8080/EmployeeReimbursementSystem/index.html";;
 } else {
 		
-	let SesInfoOjb = JSON.parse(SesInfo); // parse the data that we see == to that attribute
+	let SesInfoOjb = JSON.parse(SesInfo); // parse the data that we see 
 	e=SesInfoOjb.e;
 	
 	console.log(SesInfoOjb.userId);
@@ -36,7 +39,7 @@ console.log(userId);
 console.log(email);
 console.log(role);
 
-
+//Filling out user fields
 document.getElementById("firstName").innerHTML=firstName;
 document.getElementById("lastName").innerHTML=lastName;
 document.getElementById("username").innerHTML=username;
@@ -51,15 +54,18 @@ if (Number(role)==1){
     document.getElementById("role").innerHTML="  manager"
 }
 
-
+//Going to update page
 function update(){
 			window.location = "http://localhost:8080/EmployeeReimbursementSystem/employeeInformationUpdate.html";
 }
 
+
+//Going to employee home page
 function employeeHome(){
 	window.location = "http://localhost:8080/EmployeeReimbursementSystem/employeeHome.html";
 }
 
+//Logging out
 function logout(){
 
 		let xhr = new XMLHttpRequest();

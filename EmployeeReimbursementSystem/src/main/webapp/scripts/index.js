@@ -1,4 +1,6 @@
 function employeeLogin(){
+
+	//Getting login info
 	console.log("send employee login");
 	
 	let eUsername=document.getElementById('employeeUsername').value;
@@ -7,16 +9,18 @@ function employeeLogin(){
 	console.log(`employee username ${eUsername}`);
 	console.log(`employee password ${ePassword}`);
 
-
+	//Creating login template to send information to backend
 	let loginTemplate={
 		username: eUsername,
 		password: ePassword,
 		role : 1
 	}
 
+	//Creating request object
 	console.log("step 1");
 	let xhr=new XMLHttpRequest();
 
+	//Creating request completed function
 	console.log("step 2");	
 	xhr.onreadystatechange = function() {
         if (this.readyState === 4 && this.status === 200) {
@@ -44,21 +48,15 @@ function employeeLogin(){
 
 			console.log(`the current err is: ${SesInfoOjb.err.err}`);
 
-			console.log(`the current list is: ${SesInfoOjb.list}`);
-
-			console.log(`the current list[0] is: ${SesInfoOjb.list[0]}`);
-
-			console.log(`the current list[1] is: ${SesInfoOjb.list[1]}`);
-
-			console.log(`the current list[2] is: ${SesInfoOjb.list[2]}`);
-			console.log(`the current list[2][0] is: ${SesInfoOjb.list[2][0]}`);
-			console.log(`the current list[2][1] is: ${SesInfoOjb.list[2][1]}`);
-
-
+//			console.log(`the current list is: ${SesInfoOjb.list}`);
+//			console.log(`the current list[0] is: ${SesInfoOjb.list[0]}`);
+//			console.log(`the current list[1] is: ${SesInfoOjb.list[1]}`);
+//			console.log(`the current list[2] is: ${SesInfoOjb.list[2]}`);
+//			console.log(`the current list[2][0] is: ${SesInfoOjb.list[2][0]}`);
+//			console.log(`the current list[2][1] is: ${SesInfoOjb.list[2][1]}`);
 			//let sesInfo=sessionStorage.setItem('userId', this.responseText)		
             //console.log(sessionStorage.setItem('userId', this.responseText));
 			//console.log(JSON.parse(sesInfo));
-			
 			//console.log("loop");
 			//for (let i=0; i<sesInfo.length(); i++){
 			//	console.log(i);
@@ -76,12 +74,12 @@ function employeeLogin(){
         }
     }
 
+	//Invoking backend method
 	console.log("step 3");
-    // 3. xhr.open("POST, "http:/localhost:8080/EmployeeDBServlet/url for the loginServlet")
     xhr.open("POST", "http://localhost:8080/EmployeeReimbursementSystem/employeeLogin")
 
+	//Passing information to backend
 	console.log("step 4");
-    // 4. xhr.send();
     xhr.send(JSON.stringify(loginTemplate))
 	console.log("Done");
 }
@@ -89,6 +87,8 @@ function employeeLogin(){
 
 
 function managerLogin(){
+
+	//Getting login info
 	console.log("send employee login");
 	
 	let mUsername=document.getElementById('managerUsername').value;
@@ -97,15 +97,18 @@ function managerLogin(){
 	console.log(`manager username ${mUsername}`);
 	console.log(`manager password ${mPassword}`);
 
+	//Creating login template to send information to backend
 	let loginTemplate={
 		username: mUsername,
 		password: mPassword,
 		role : 2
 	}
 
+	//Creating request object
 	console.log("step 1");
 	let xhr=new XMLHttpRequest();
 
+	//Creating request completed function
 	console.log("step 2");	
 	xhr.onreadystatechange = function() {
         if (this.readyState === 4 && this.status === 200) {
@@ -139,10 +142,12 @@ function managerLogin(){
         }
     }
 
+	//Invoking backend method
 	console.log("step 3");
     // 3. xhr.open("POST, "http:/localhost:8080/EmployeeDBServlet/url for the loginServlet")
     xhr.open("POST", "http://localhost:8080/EmployeeReimbursementSystem/managerLogin")
 
+	//Passing information to backend
 	console.log("step 4");
     // 4. xhr.send();
     xhr.send(JSON.stringify(loginTemplate))

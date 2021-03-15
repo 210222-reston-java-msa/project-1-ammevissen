@@ -1,10 +1,11 @@
 window.onload = onLoad();
 
-
+//Going to employee home page
 function managerHome(){
 	window.location = "http://localhost:8080/EmployeeReimbursementSystem/managerHome.html";
 }
 
+//Logging out
 function logout(){
 
 		let xhr = new XMLHttpRequest();
@@ -17,6 +18,7 @@ function logout(){
 }
 
 function managerViewTemplateFunction(){
+	//Getting information
 	console.log("Starting Manager Reimbursement Viewing");
 	let SesInfo = sessionStorage.getItem('userId');
 
@@ -61,6 +63,7 @@ function managerViewTemplateFunction(){
 	console.log(view);
 	console.log(employeeId);
 
+	//Creating view template
 	let managerViewTemplate={
 		userId : userId,
 		username : username,
@@ -77,13 +80,14 @@ function managerViewTemplateFunction(){
 
 function onLoad(){
 
-
+	//Getting view template
 	let managerViewTemplate=managerViewTemplateFunction();
 	
-	
+	//Creating request object
 	console.log("step 1");
 	let xhr=new XMLHttpRequest();
-
+	
+	//Creating request completed function
 	console.log("step 2");	
 	xhr.onreadystatechange = function() {
         if (this.readyState === 4 && this.status === 200) {
@@ -100,6 +104,7 @@ function onLoad(){
 			reimbursements=SesInfoOjb.list
 			console.log(reimbursements);
 			
+			//Creating table and getting table information
 			let table=document.getElementById("viewRequests");
 			let tableBody=document.getElementById("body");
 			tableBody.remove()
@@ -162,9 +167,11 @@ function onLoad(){
         }
     }
 
+	//Invoking backend method
 	console.log("step 3");
     xhr.open("POST", "http://localhost:8080/EmployeeReimbursementSystem/managerView")
 
+	//Passing information to backend
 	console.log("step 4");
     xhr.send(JSON.stringify(managerViewTemplate))
 	console.log("Done");
@@ -173,9 +180,10 @@ function onLoad(){
 
 
 function approve(){
-
+	//Getting view template
 	let managerViewTemplate=managerViewTemplateFunction();
 
+	//Creating Approve template to send information to backend
 	let approveTemplate={
 		userId : managerViewTemplate.userId,
 		username : managerViewTemplate.username,
@@ -187,7 +195,7 @@ function approve(){
 		approve : 1
 	}
 
-
+	//Getting request ID and approve/reject status from the table
 	var table = document.getElementById("viewRequests");
     let rows=table.rows;
 
@@ -202,10 +210,12 @@ function approve(){
         console.log(`reimId: ${approveTemplate.reimId}`);
         console.log(`approve: ${approveTemplate.approve}`);
 
-		if (approveTemplate.reimId>1){
+		if (approveTemplate.approve>1){
+			//Creating request object
 			console.log("step 1");
 			let xhr=new XMLHttpRequest();
 
+			//Creating request completed function
 			console.log("step 2");	
 			xhr.onreadystatechange = function() {
         		if (this.readyState === 4 && this.status === 200) {
@@ -220,12 +230,14 @@ function approve(){
 					let SesInfoOjb = JSON.parse(SesInfo);
 				}
 			}	
-
+			
+			//Invoking backend method
 			console.log("step 3");
 		    xhr.open("POST", "http://localhost:8080/EmployeeReimbursementSystem/approve")
 
 			console.log(`reimID: ${approveTemplate.reimId}  approval status: ${approveTemplate.approve}`)
 				
+			//Passing information to backend
 			console.log("step 4");
     		xhr.send(JSON.stringify(approveTemplate));
 			console.log(`Done with ${i}`);
@@ -234,6 +246,6 @@ function approve(){
 	}
 
 
-//update the page()
+//update the page
 onLoad();
 }

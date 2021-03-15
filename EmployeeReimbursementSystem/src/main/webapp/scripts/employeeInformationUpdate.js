@@ -1,4 +1,5 @@
 //on page startup 
+//Getting user information from session
 let SesInfo = sessionStorage.getItem('userId');
 console.log(`the current user is: ${SesInfo}`);
 
@@ -38,7 +39,7 @@ console.log(userId);
 console.log(email);
 console.log(role);
 
-
+//Filling out user fields
 document.getElementById("firstName").innerHTML=firstName;
 document.getElementById("lastName").innerHTML=lastName;
 document.getElementById("username").innerHTML=username;
@@ -56,6 +57,8 @@ if (Number(role)==1){
 
 
 function update(){
+
+	//Getting user profile information
 	console.log("updating employee profile");
 	let SesInfo = sessionStorage.getItem('userId');
 	let SesInfoOjb = JSON.parse(SesInfo); // parse the data that we see == to that attribute
@@ -71,6 +74,8 @@ function update(){
 	let role=e.roleId;
 	let password=e.password;
 
+
+	//Getting information to update
 	let newFirstName=document.getElementById("newFirstName").value;
 	let newLastName=document.getElementById("newLastName").value;
 	let newPassword=document.getElementById("newPassword").value;
@@ -88,7 +93,7 @@ function update(){
 		password=newPassword;
 	}
 	
-	
+	//Creating employee template to send inforamtion to the backend
 	let employeeTemplate={
 		userId : userId,
 		username : username,
@@ -99,9 +104,11 @@ function update(){
 		roleId : role
 		}
 
+	//Creating request object
 	console.log("step 1");
 	let xhr=new XMLHttpRequest();
 
+	//Creating request completed function
 	console.log("step 2");	
 	xhr.onreadystatechange = function() {
         if (this.readyState === 4 && this.status === 200) {
@@ -124,19 +131,21 @@ function update(){
     }
 
 	console.log("step 3");
-    // 3. xhr.open("POST, "http:/localhost:8080/EmployeeDBServlet/url for the loginServlet")
+	//Invoking backend method
     xhr.open("POST", "http://localhost:8080/EmployeeReimbursementSystem/employeeUpdate")
 
 	console.log("step 4");
-    // 4. xhr.send();
+    //Passing information to backend
     xhr.send(JSON.stringify(employeeTemplate))
 	console.log("Done");
 }
 
+//Going to employee home page
 function employeeHome(){
 	window.location = "http://localhost:8080/EmployeeReimbursementSystem/employeeHome.html";
 }
 
+//Logging out
 function logout(){
 
 		let xhr = new XMLHttpRequest();

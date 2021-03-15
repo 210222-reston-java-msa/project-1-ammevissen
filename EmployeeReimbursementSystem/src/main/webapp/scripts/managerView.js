@@ -1,7 +1,10 @@
+
+//Going to employee home page
 function managerHome(){
 	window.location = "http://localhost:8080/EmployeeReimbursementSystem/managerHome.html";
 }
 
+//Logging out
 function logout(){
 
 		let xhr = new XMLHttpRequest();
@@ -16,6 +19,7 @@ function logout(){
 
 function Reimbursements(){
 
+	//Getting information
 	console.log("Starting Manager Reimbursement Viewing");
 	let SesInfo = sessionStorage.getItem('userId');
 
@@ -32,7 +36,7 @@ function Reimbursements(){
 		window.location = "http://localhost:8080/EmployeeReimbursementSystem/index.html";
 	} else {
 		
-		let SesInfoOjb = JSON.parse(SesInfo); // parse the data that we see == to that attribute
+		let SesInfoOjb = JSON.parse(SesInfo); 
 		e=SesInfoOjb.e;
 	
 		console.log(SesInfoOjb.userId);
@@ -60,6 +64,7 @@ function Reimbursements(){
 	console.log(view);
 	console.log(employeeId);
 
+	//Creating View template to send information to backend
 	let managerViewTemplate={
 		userId : userId,
 		username : username,
@@ -72,10 +77,11 @@ function Reimbursements(){
 	}
 	
 	
-	
+	//Creating request object
 	console.log("step 1");
 	let xhr=new XMLHttpRequest();
 
+	//Creating request completed function
 	console.log("step 2");	
 	xhr.onreadystatechange = function() {
         if (this.readyState === 4 && this.status === 200) {
@@ -89,6 +95,7 @@ function Reimbursements(){
 			
 			let SesInfoOjb = JSON.parse(SesInfo);
 			
+			//Creating table and getting table information
 			reimbursements=SesInfoOjb.list
 			console.log(reimbursements);
 			
@@ -125,9 +132,11 @@ function Reimbursements(){
         }
     }
 
+	//Invoking backend method
 	console.log("step 3");
     xhr.open("POST", "http://localhost:8080/EmployeeReimbursementSystem/managerView")
 
+	//Passing information to backend
 	console.log("step 4");
     xhr.send(JSON.stringify(managerViewTemplate))
 	console.log("Done");

@@ -1,6 +1,8 @@
 package com.revature.models;
 
-public class Employee {private int userId;
+public class Employee {
+	
+private int userId;
 private String username;
 private String password;
 private String firstName;

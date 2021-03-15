@@ -42,10 +42,10 @@ public class FrontController extends HttpServlet {
 			log.debug("heading to process Manager Login");
 			RequestHelper.processManagerLogin(request, response);
 			break;
-		case "employeeHome":
-			log.debug("heading to Employee Home");
-			RequestHelper.employeeHome(request, response);
-			break;
+//		case "employeeHome":
+//			log.debug("heading to Employee Home");
+//			RequestHelper.employeeHome(request, response);
+//			break;
 		case "employeeReimbursement":
 			log.debug("heading to process Employee Reimbursement");
 			RequestHelper.processEmployeeReimbursement(request, response);

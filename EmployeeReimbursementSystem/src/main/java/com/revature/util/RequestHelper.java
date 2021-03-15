@@ -21,6 +21,7 @@ import com.revature.models.ErrorMsg;
 import com.revature.models.LoginInfo;
 import com.revature.models.ManagerViewTemplate;
 import com.revature.models.Reimbursement;
+import com.revature.models.ReimbursementTemplate;
 import com.revature.models.Response;
 import com.revature.models.ViewTemplate;
 import com.revature.services.EmployeeService;
@@ -164,13 +165,40 @@ public class RequestHelper {
 		//Convert to Java object
 		String body=RequestHelperUtil.processEmployeeLogin(req);
 		log.debug("Employee Reimbursement info: "+body);
-		Reimbursement reim=om.readValue(body, Reimbursement.class);
+		
+		
+		ReimbursementTemplate reimTemp=om.readValue(body, ReimbursementTemplate.class);
+
+		
+		Employee e=new Employee(reimTemp.getUserId(), reimTemp.getUsername(), reimTemp.getFirstName(), reimTemp.getLastName(), reimTemp.getEmail(), reimTemp.getRoleId());;
+		//
+		Reimbursement reim=new Reimbursement(reimTemp.getAmount(), reimTemp.getDescription(), reimTemp.getUserId(), reimTemp.getStatusId(), reimTemp.getTypeId());
 				
 		//Sending reimbursement to database
 		log.debug("Employee Reimbursement class info: "+reim.toString());
 		int result=EmployeeService.processEmployeeReimbursement(reim);
 		
 		log.debug("the result of adding to the DB"+result);
+		
+		//Creating return message
+		PrintWriter pw=res.getWriter();
+		res.setContentType("application/json");
+				
+		Response r=new Response();
+				
+				
+		if (result==1) {
+			r.setE(e);
+			r.setErr(new ErrorMsg("None"));
+			String bothJson=new Gson().toJson(r);
+			log.debug(bothJson); 
+			pw.println(bothJson);
+			//Setting the session status 
+			res.setStatus(200);
+		}else {
+			res.setStatus(204);
+		}
+		
 	}
 	
 //	public static void employeeHome(HttpServletRequest req, HttpServletResponse res) throws IOException {

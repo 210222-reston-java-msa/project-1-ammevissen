@@ -1,4 +1,5 @@
 //on load
+//Get manager information
 let SesInfo = sessionStorage.getItem('userId');
 console.log(`the current user is: ${SesInfo}`);
 
@@ -39,6 +40,7 @@ console.log(userId);
 console.log(email);
 console.log(role);
 
+//Creating employee template to send information to backend
 let employeeTemplate={
 	userId : userId,
 	username : username,
@@ -49,10 +51,12 @@ let employeeTemplate={
 }
 	
 	
-	
+//Creating request object
 console.log("step 1");
 let xhr=new XMLHttpRequest();
 
+
+//Creating request completed function
 console.log("step 2");	
 xhr.onreadystatechange = function() {
 	if (this.readyState === 4 && this.status === 200) {
@@ -66,6 +70,7 @@ xhr.onreadystatechange = function() {
 			
 		let SesInfoOjb = JSON.parse(SesInfo);
 			
+		//Creating table and getting table information
 		employees=SesInfoOjb.list
 		console.log(employees);
 			
@@ -102,20 +107,23 @@ xhr.onreadystatechange = function() {
 	}
 }
 
+//Invoking backend method
 console.log("step 3");
 xhr.open("POST", "http://localhost:8080/EmployeeReimbursementSystem/viewEmployees")
 
+//Passing information to backend
 console.log("step 4");
 xhr.send(JSON.stringify(employeeTemplate))
 console.log("Done");
 
 
 
-
+//Going to employee home page
 function managerHome(){
 	window.location = "http://localhost:8080/EmployeeReimbursementSystem/managerHome.html";
 }
 
+//Logging out
 function logout(){
 
 		let xhr = new XMLHttpRequest();

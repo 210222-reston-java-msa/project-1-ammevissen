@@ -1,15 +1,14 @@
 function managerChoice(){
 
+	//Getting user choice
 	console.log("get task choice");
-	let choice=document.getElementById('task').value;
-	
+	let choice=document.getElementById('task').value;	
 	console.log(`manager task ${task}`);
 	
 	let userID = sessionStorage.getItem('userId');
-
 	console.log(`the current user is: ${userID}`);
 	
-	
+	//Going to page user picked
 	switch (choice){
 		case "approve reimbursements":
 			console.log("choice 1");
@@ -26,6 +25,7 @@ function managerChoice(){
 	}
 }
 
+//Logging out
 function logout(){
 
 		let xhr = new XMLHttpRequest();

@@ -1,4 +1,6 @@
 function Reimbursements(){
+
+	//Getting employee information
 	let SesInfo = sessionStorage.getItem('userId');
 
 	let firstName;
@@ -40,6 +42,7 @@ function Reimbursements(){
 	console.log(role);
 	console.log(view);
 
+	//Creating view template to send information to backend
 	let viewTemplate={
 		userId : userId,
 		username : username,
@@ -51,10 +54,11 @@ function Reimbursements(){
 	}
 	
 	
-	
+	//Creating request object
 	console.log("step 1");
 	let xhr=new XMLHttpRequest();
 
+	//Creating request completed function
 	console.log("step 2");	
 	xhr.onreadystatechange = function() {
         if (this.readyState === 4 && this.status === 200) {
@@ -71,6 +75,7 @@ function Reimbursements(){
 			reimbursements=SesInfoOjb.list
 			console.log(reimbursements);
 			
+			//Creating Table and adding information to table
 			let table=document.getElementById("viewRequests");
 			let tableBody=document.getElementById("body");
 			tableBody.remove()
@@ -104,19 +109,23 @@ function Reimbursements(){
         }
     }
 
+	//Invoking backend method
 	console.log("step 3");
     xhr.open("POST", "http://localhost:8080/EmployeeReimbursementSystem/employeeView")
-
+	
+	//Passing information to backend
 	console.log("step 4");
     xhr.send(JSON.stringify(viewTemplate))
 	console.log("Done");
 
 }
 
+//Going to employee home page
 function employeeHome(){
 	window.location = "http://localhost:8080/EmployeeReimbursementSystem/employeeHome.html";
 }
 
+//Logging out
 function logout(){
 
 		let xhr = new XMLHttpRequest();
