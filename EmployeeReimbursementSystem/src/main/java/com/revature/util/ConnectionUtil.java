@@ -23,18 +23,18 @@ public class ConnectionUtil {
 		
 		
 		Properties props = new Properties();
-		// This ClassLoader isn't always necessary, but it's an obj used to search through our entire project
-		// to find our connection.properties file to give us the connection creds
+		
+		//Find our connection.properties file to get the connection credentials
 		ClassLoader loader = Thread.currentThread().getContextClassLoader();
 		Connection conn = null;
 		
 		try {
 			props.load(loader.getResourceAsStream("connection.properties"));
-			// capture the connection URL
+			//Capture the connection URL
 			String url = props.getProperty("url"); 
-			// capture the username
+			//Capture the username
 			String username = props.getProperty("username");
-			// capture the password
+			//Capture the password
 			String password = props.getProperty("password");
 			
 			try {

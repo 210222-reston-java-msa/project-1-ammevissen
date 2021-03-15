@@ -35,6 +35,7 @@ public class RequestHelper {
 	
 	public static void processEmployeeLogin(HttpServletRequest req, HttpServletResponse res) throws IOException { 
 		
+		//Convert to Java object
 		String body=RequestHelperUtil.processEmployeeLogin(req);
 		
 		LoginInfo loginAttempt=om.readValue(body, LoginInfo.class);
@@ -43,16 +44,20 @@ public class RequestHelper {
 		String password=loginAttempt.getPassword();
 		int role=loginAttempt.getRole();
 		
+		
+		//Checking if the password is correct for the given user.
 		log.info("User attempted to login with username: "+username);
 		Employee e=EmployeeService.confirmLogin(username, password, role);
 
 		if (e!=null) {
 			
-			
+			//Setting the session info
 			HttpSession ses=req.getSession();
 			ses.setAttribute("userId", e.getUserId());
 			res.setStatus(200);
 			
+			
+			//Creating return message
 			ErrorMsg err=new ErrorMsg("Everything is fine");
 			
 			List<Object> list=new ArrayList<Object>();
@@ -98,6 +103,7 @@ public class RequestHelper {
 			
 			//pw.println(om.writeValueAsString({{"employee": e}, {"err": err}}));
 		
+			//setting the session satus
 			res.setStatus(200);
 			log.info(username+ " has successfully logged in");
 			
@@ -110,6 +116,7 @@ public class RequestHelper {
 	
 	public static void processManagerLogin(HttpServletRequest req, HttpServletResponse res) throws IOException { 
 
+		//Convert to Java object
 		String body=RequestHelperUtil.processEmployeeLogin(req);
 		
 		LoginInfo loginAttempt=om.readValue(body, LoginInfo.class);
@@ -118,14 +125,16 @@ public class RequestHelper {
 		String password=loginAttempt.getPassword();
 		int role=loginAttempt.getRole();
 		
+		//Checking if the password is correct for the given user.
 		log.info("User attempted to login with username: "+username);
 		Employee e=EmployeeService.confirmLogin(username, password, role);
 
 		if (e!=null) {
+			//setting the session info
 			HttpSession ses=req.getSession();
 			ses.setAttribute("userId", e.getUserId());
-			res.setStatus(200);
 			
+			//Creating return message
 			ErrorMsg err=new ErrorMsg("None");
 
 			PrintWriter pw=res.getWriter();
@@ -142,7 +151,9 @@ public class RequestHelper {
 			pw.println(bothJson);
 
 			log.info(username+ " has successfully logged in");
-		
+
+			//setting the session status
+			res.setStatus(200);
 		}else {
 			res.setStatus(204);
 		}
@@ -150,33 +161,42 @@ public class RequestHelper {
 	
 	public static void processEmployeeReimbursement(HttpServletRequest req, HttpServletResponse res) throws IOException {
 
+		//Convert to Java object
 		String body=RequestHelperUtil.processEmployeeLogin(req);
 		log.debug("Employee Reimbursement info: "+body);
 		Reimbursement reim=om.readValue(body, Reimbursement.class);
 				
+		//Sending reimbursement to database
 		log.debug("Employee Reimbursement class info: "+reim.toString());
 		int result=EmployeeService.processEmployeeReimbursement(reim);
 		
 		log.debug("the result of adding to the DB"+result);
 	}
 	
-	public static void employeeHome(HttpServletRequest req, HttpServletResponse res) throws IOException {
-		String body=RequestHelperUtil.processEmployeeLogin(req);
-		log.debug("Employee Reimbursement info: "+body);
-		
-		
-		
-	}
+//	public static void employeeHome(HttpServletRequest req, HttpServletResponse res) throws IOException {
+//		
+//		//Convert to Java object
+//		String body=RequestHelperUtil.processEmployeeLogin(req);
+//		log.debug("Employee Reimbursement info: "+body);
+//		
+//		
+//		
+//	}
 
 	
 	public static void processEmployeeUpdate(HttpServletRequest req, HttpServletResponse res) throws IOException {
+		
+		//Convert to Java object
 		String body=RequestHelperUtil.processEmployeeLogin(req);
 		log.debug("Employee Reimbursement info: "+body);
 		
 		Employee e=om.readValue(body, Employee.class);
 		
+		//Sending updated employee information to database
 		int result=EmployeeService.processEmployeeUpdate(e);
 		
+		
+		//Creating return message
 		PrintWriter pw=res.getWriter();
 		res.setContentType("application/json");
 		
@@ -189,6 +209,9 @@ public class RequestHelper {
 			String bothJson=new Gson().toJson(r);
 			log.debug(bothJson); 
 			pw.println(bothJson);
+		}else {
+			//Setting the session status 
+			res.setStatus(204);
 		}
 		
 		
@@ -197,21 +220,28 @@ public class RequestHelper {
 	
 	public static void loggingOut(HttpServletRequest req, HttpServletResponse res) throws IOException {
 		
-		HttpSession session=req.getSession(false); //I'm capturing the session, but if there isn't one, I don't create a new one.
+		//Getting the session (but don't create one if there isn't one)
+		HttpSession session=req.getSession(false); 
 	
+		
 		log.info("Processing logout");
 	
+		
 		if (session!=null) {
+			//Ending the session
 			String username=(String) session.getAttribute("userId");
 			log.info(username + " has logged out");
 			session.invalidate();
 		}
-	
+		
+		//Setting the session status
 		res.setStatus(200);
 		
 	}
 	
 	public static void empoloyeeView(HttpServletRequest req, HttpServletResponse res) throws IOException {
+		
+		//Convert to Java object
 		String body=RequestHelperUtil.processEmployeeLogin(req);
 		log.debug("Employee Reimbursement info: "+body);
 		
@@ -219,15 +249,18 @@ public class RequestHelper {
 		
 		Employee e=new Employee(view.getUserId(), view.getUsername(), view.getFirstName(), view.getLastName(), view.getEmail(), view.getRoleId());
 		
+		//Creating return message		
 		PrintWriter pw=res.getWriter();
 		res.setContentType("application/json");
 		
 		Response r=new Response();;
 		r.setE(e);
-		r.setList(EmployeeService.employeeView(e.getUserId(), view.getView()));
+		r.setList(EmployeeService.employeeView(e.getUserId(), view.getView()));//Getting reimbursements info for the employee
 		
 		if (r.getList().size()>0) {
 			r.setErr(new ErrorMsg("None"));
+			
+			//Setting the session status
 			res.setStatus(200);
 		}else {
 			r.setErr(new ErrorMsg("Fail"));
@@ -241,6 +274,8 @@ public class RequestHelper {
 	}
 	
 	public static void managerView(HttpServletRequest req, HttpServletResponse res) throws IOException {
+		
+		//Convert to Java object
 		String body=RequestHelperUtil.processEmployeeLogin(req);
 		log.debug("Employee Reimbursement info: "+body);
 		
@@ -248,19 +283,22 @@ public class RequestHelper {
 		
 		Employee e=new Employee(view.getUserId(), view.getUsername(), view.getFirstName(), view.getLastName(), view.getEmail(), view.getRoleId());
 		
+		//Creating return message
 		PrintWriter pw=res.getWriter();
 		res.setContentType("application/json");
 		
 		Response r=new Response();;
 		r.setE(e);
 		if (view.getEmployeeId()==0) {
-			r.setList(ManagerService.managerView(view.getView()));			
+			r.setList(ManagerService.managerView(view.getView()));//Getting reimbursements info for all employees	
 		}else {
-			r.setList(ManagerService.managerView(view.getEmployeeId(), view.getView()));
+			r.setList(ManagerService.managerView(view.getEmployeeId(), view.getView()));//Getting reimbursements info for an individual employee
 		}
 		
 		if (r.getList().size()>0) {
 			r.setErr(new ErrorMsg("None"));
+			
+			//Setting the session status
 			res.setStatus(200);
 		}else {
 			r.setErr(new ErrorMsg("Fail"));
@@ -275,20 +313,24 @@ public class RequestHelper {
 	
 	
 	public static void viewEmployees(HttpServletRequest req, HttpServletResponse res) throws IOException {
+		
+		//Convert to Java object
 		String body=RequestHelperUtil.processEmployeeLogin(req);
 		log.debug("Employee Reimbursement info: "+body);
 		
 		Employee e=om.readValue(body, Employee.class);
 		
+		//Creating return message
 		PrintWriter pw=res.getWriter();
 		res.setContentType("application/json");
 		
 		Response r=new Response();;
 		r.setE(e);
-		r.setList(ManagerService.viewEmployees());
+		r.setList(ManagerService.viewEmployees());//Getting employee inforamation
 		
 		if (r.getList().size()>0) {
 			r.setErr(new ErrorMsg("None"));
+			//Setting the session status
 			res.setStatus(200);
 		}else {
 			r.setErr(new ErrorMsg("Fail"));
@@ -303,6 +345,8 @@ public class RequestHelper {
 
 	
 	public static void approve(HttpServletRequest req, HttpServletResponse res) throws IOException {
+		
+		//Convert to Java object
 		String body=RequestHelperUtil.processEmployeeLogin(req);
 		log.debug("Employee Reimbursement Approval info: "+body);
 		
@@ -310,14 +354,17 @@ public class RequestHelper {
 		
 		Employee e=new Employee(approve.getUserId(), approve.getUsername(), approve.getFirstName(), approve.getLastName(), approve.getEmail(), approve.getRoleId());
 		
-		
+		//Creating return message
 		PrintWriter pw=res.getWriter();
 		res.setContentType("application/json");
 		
 		Response r=new Response();;
 		r.setE(e);
+		
+		//Sending reimbursement approval/rejection to database
 		if (ManagerService.approve(approve.getApprove(), approve.getUserId(), approve.getReimId())>0) {
 			r.setErr(new ErrorMsg("None"));
+			//Setting the session status
 			res.setStatus(200);
 		}else {
 			r.setErr(new ErrorMsg("Fail"));

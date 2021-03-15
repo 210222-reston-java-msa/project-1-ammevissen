@@ -24,7 +24,8 @@ public class ManagerDAOImpl implements ManagerDAO {
 		
 		try {
 			Connection conn=ConnectionUtil.getConnection();
-		
+			
+			//Setting the PreparedStatment
 			PreparedStatement pstmt;
 			
 			if (view==0) {				
@@ -62,11 +63,14 @@ public class ManagerDAOImpl implements ManagerDAO {
 				pstmt.setInt(1, view);
 			}
 			
+			//Executing the call to SQL
+			log.debug("about to execute Query for all users");
 			ResultSet result=pstmt.executeQuery();
 			log.debug("Query executed");
 			
 			
 			//https://howtodoinjava.com/java/date-time/convert-string-to-localdate/			
+			//Retrieving the reimbursements from the call to SQL
 			while(result.next()) {
 				List<Object> employeeReimbursement= new ArrayList<Object>();
 				employeeReimbursement.add(result.getInt("reimb_id"));
@@ -146,6 +150,7 @@ public class ManagerDAOImpl implements ManagerDAO {
 		try {
 			Connection conn=ConnectionUtil.getConnection();
 		
+			//Setting the PreparedStatment
 			PreparedStatement pstmt;
 			
 			String people="SELECT * "
@@ -154,12 +159,14 @@ public class ManagerDAOImpl implements ManagerDAO {
 			pstmt= conn.prepareStatement(people);
 			log.debug("pstmt created");
 			
-			
+			//Executing the call to SQL
+			log.debug("about to execute Query for employees");
 			ResultSet result=pstmt.executeQuery();
 			log.debug("Query executed");
 			
 			
 			//https://howtodoinjava.com/java/date-time/convert-string-to-localdate/			
+			//Retrieving the employees from the call to SQL
 			while(result.next()) {
 				List<Object> employee= new ArrayList<Object>();
 				employee.add(result.getString("ers_first_name"));
@@ -188,6 +195,7 @@ public class ManagerDAOImpl implements ManagerDAO {
 		try {
 			Connection conn=ConnectionUtil.getConnection();
 		
+			//Setting the PreparedStatment
 			String reimbursement="UPDATE ers_reimbursement "
 							+ "set REIMB_STATUS_ID =?, "
 							+ "reimb_resolver=?, "
@@ -201,7 +209,8 @@ public class ManagerDAOImpl implements ManagerDAO {
 			pstmt.setInt(2, e);
 			pstmt.setInt(3, ReimId);
 			
-			log.debug("executing update");
+			//Executing the update to SQL
+			log.debug("executing update for ReimId"+ReimId);
 			return pstmt.executeUpdate();
 		}catch (SQLException ex) {
 			log.warn("Unable update reimbursement database", ex);

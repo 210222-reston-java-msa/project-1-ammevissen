@@ -35,7 +35,6 @@ public class EmployeeDAOImpl implements EmployeeDAO{
 			
 			//Executing the call to SQL
 			log.debug("about to execute Query for user: "+username);
-			
 			ResultSet employee=pstmt.executeQuery();
 			log.debug("Query executed");
 
@@ -65,7 +64,7 @@ public class EmployeeDAOImpl implements EmployeeDAO{
 
 		try {
 			Connection conn=ConnectionUtil.getConnection();
-		
+			//Setting the PreparedStatment
 			String reimbursment="INSERT INTO ers_reimbursement(reimb_amount, reimb_description, reimb_author, reimb_status_id, reimb_type_id)"
 								+"VALUES(?, ?, ?, ?, ?)";
 
@@ -78,7 +77,10 @@ public class EmployeeDAOImpl implements EmployeeDAO{
 			pstmt.setInt(4, reim.getStatusId());
 			pstmt.setInt(5, reim.getTypeId());
 		
+			//Executing the call to SQL
+			log.debug("about to execute update for Reimbursement: "+reim);
 			return pstmt.executeUpdate();
+			
 		}catch (SQLException ex) {
 			log.warn("Unable insert reimbursement into the database", ex);
 			return 0;
@@ -90,6 +92,7 @@ public class EmployeeDAOImpl implements EmployeeDAO{
 		try {
 			Connection conn=ConnectionUtil.getConnection();
 		
+			//Setting the PreparedStatment
 			String reimbursement="UPDATE ers_users "
 					+ "SET ers_password= ?, "
 					+ "ers_first_name= ?, "
@@ -104,7 +107,8 @@ public class EmployeeDAOImpl implements EmployeeDAO{
 			pstmt.setString(3, e.getLastName());
 			pstmt.setInt(4, e.getUserId());
 			
-			
+			//Executing the call to SQL
+			log.debug("about to execute update for employee: "+e.getUsername());
 			return pstmt.executeUpdate();
 		}catch (SQLException ex) {
 			log.warn("Unable insert reimbursement into the database", ex);
@@ -121,6 +125,7 @@ public class EmployeeDAOImpl implements EmployeeDAO{
 		try {
 			Connection conn=ConnectionUtil.getConnection();
 		
+			//Setting the PreparedStatment
 			PreparedStatement pstmt;
 			
 			if (view==0) {
@@ -160,11 +165,14 @@ public class EmployeeDAOImpl implements EmployeeDAO{
 				pstmt.setInt(2, view);
 			}
 			
+			//Executing the call to SQL
+			log.debug("about to execute Query for userId: "+e);
 			ResultSet result=pstmt.executeQuery();
 			log.debug("Query executed");
 			
 			
 			//https://howtodoinjava.com/java/date-time/convert-string-to-localdate/			
+			//Retrieving the reimbursements from the call to SQL
 			while(result.next()) {
 				List<Object> employeeReimbursement= new ArrayList<Object>();
 				employeeReimbursement.add(result.getInt("reimb_id"));

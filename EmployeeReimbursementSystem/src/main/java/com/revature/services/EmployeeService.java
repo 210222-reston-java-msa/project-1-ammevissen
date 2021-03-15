@@ -14,6 +14,7 @@ public class EmployeeService {
 	public static Employee confirmLogin(String username, String password, int role) {
 		Employee e=eDAO.findByUsername(username);
 		
+		//checking if passwords match for given username
 		if (e!=null && e.getPassword().equals(password) &&e.getRoleId()>=role) {
 			return (e);
 		}else {

@@ -26,8 +26,12 @@ public class FrontController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		log.debug("FrontController doGet");
 		
+		
+		//Simplifying URI string  
 		final String URI = request.getRequestURI().replace("/EmployeeReimbursementSystem/", "");
 		
+		
+		//Selecting the appropriate helper function
 		log.debug(URI);
 		switch(URI) {
 		case "employeeLogin":

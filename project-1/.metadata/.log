@@ -5192,3 +5192,75 @@ java.lang.InterruptedException
 
 !ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2021-03-14 17:02:01.484
 !MESSAGE ClasspathListenerHandler removeClasspathListener sts4.classpath.XdTzqSnL => OK
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2021-03-14 19:48:53.979
+!MESSAGE Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2021-03-14 19:48:53.996
+!MESSAGE Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2021-03-14 19:53:32.678
+!MESSAGE Entering DelegatingStreamConnectionProvider()
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2021-03-14 19:53:32.683
+!MESSAGE DelegatingStreamConnectionProvider classloader = org.eclipse.osgi.internal.loader.EquinoxClassLoader@716125a3[org.springframework.tooling.boot.ls:1.24.0.202012131915(id=578)]
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2021-03-14 19:53:32.688
+!MESSAGE SpringBootLanguageServer exists!
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2021-03-14 19:53:34.090
+!MESSAGE Boot LS startup time from start to initialized: 1396ms
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2021-03-14 19:53:34.152
+!MESSAGE ClasspathListenerHandler addClasspathListener sts4.classpath.KlypfgWcisBatched = true
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2021-03-14 19:53:34.158
+!MESSAGE Setting up ClasspathListenerManager
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2021-03-14 19:53:34.163
+!MESSAGE Scheduling initial event for all projects ...
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2021-03-14 19:53:34.168
+!MESSAGE Scheduling initial event for all projects DONE
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2021-03-14 19:53:34.172
+!MESSAGE exists = true open = true => deleted = false
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2021-03-14 19:53:34.176
+!MESSAGE ClasspathListenerHandler addClasspathListener sts4.classpath.KlypfgWc => OK
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2021-03-14 19:53:34.181
+!MESSAGE classpath=20 entries
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2021-03-14 19:53:34.190
+!MESSAGE buffering callback sts4.classpath.KlypfgWc EmployeeReimbursementSystem false 20
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2021-03-14 19:53:34.195
+!MESSAGE executing callback sts4.classpath.KlypfgWc 1 batched events
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2021-03-14 19:53:34.210
+!MESSAGE executing callback sts4.classpath.KlypfgWc SUCCESS [done]
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2021-03-14 20:04:30.291
+!MESSAGE Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2021-03-14 20:04:30.298
+!MESSAGE Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2021-03-14 20:10:26.996
+!MESSAGE Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2021-03-14 20:10:27.004
+!MESSAGE Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2021-03-14 20:13:27.173
+!MESSAGE Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2021-03-14 20:13:27.180
+!MESSAGE Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2021-03-14 20:37:24.768
+!MESSAGE Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2021-03-14 20:37:24.775
+!MESSAGE Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
